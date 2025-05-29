@@ -1,4 +1,4 @@
-# Install script for directory: /home/marcelohenrique/VSCode/visao-computacional
+# Install script for directory: /home/marcelo/VSCode/visao-computacional
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/marcelohenrique/VSCode/visao-computacional/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/marcelo/VSCode/visao-computacional/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
