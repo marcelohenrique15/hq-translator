@@ -1,17 +1,28 @@
 cmake_minimum_required(VERSION 3.10)
-
-project(visao-computacional)
+project(hq_translator)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Encontre o OpenCV
+# OpenCV
 find_package(OpenCV REQUIRED)
 
-# Inclui os headers do OpenCV
+# Incluir diretórios públicos
 include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(include)
 
-# Adiciona o executável
-add_executable(visao-computacional main.cpp)
+# Subdiretórios de módulos
+add_subdirectory(src/capture)
+add_subdirectory(src/detection)
+add_subdirectory(src/overlayer)
+add_subdirectory(src/translation)
 
-# Linka o OpenCV
-target_link_libraries(visao-computacional ${OpenCV_LIBS})
+# Executável principal
+add_executable(main main.cpp)
+target_link_libraries(main
+    capture
+    detection
+    overlayer
+    translation
+    ${OpenCV_LIBS}
+)

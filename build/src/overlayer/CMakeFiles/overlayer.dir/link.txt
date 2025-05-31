@@ -1,0 +1,2 @@
+/usr/bin/ar qc liboverlayer.a CMakeFiles/overlayer.dir/overlay_renderer.cpp.o
+/usr/bin/ranlib liboverlayer.a

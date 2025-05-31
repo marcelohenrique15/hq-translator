@@ -1,4 +1,4 @@
-# Install script for directory: /home/marcelo/VSCode/visao-computacional
+# Install script for directory: /home/marcelo/VSCode/hq-translator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -42,6 +42,15 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("/home/marcelo/VSCode/hq-translator/build/src/capture/cmake_install.cmake")
+  include("/home/marcelo/VSCode/hq-translator/build/src/detection/cmake_install.cmake")
+  include("/home/marcelo/VSCode/hq-translator/build/src/overlayer/cmake_install.cmake")
+  include("/home/marcelo/VSCode/hq-translator/build/src/translation/cmake_install.cmake")
+
+endif()
+
 if(CMAKE_INSTALL_COMPONENT)
   set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 else()
@@ -50,5 +59,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/marcelo/VSCode/visao-computacional/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/marcelo/VSCode/hq-translator/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

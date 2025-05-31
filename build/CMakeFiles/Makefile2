@@ -54,51 +54,229 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/marcelo/VSCode/visao-computacional
+CMAKE_SOURCE_DIR = /home/marcelo/VSCode/hq-translator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/marcelo/VSCode/visao-computacional/build
+CMAKE_BINARY_DIR = /home/marcelo/VSCode/hq-translator/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/visao-computacional.dir/all
+all: CMakeFiles/main.dir/all
+all: src/capture/all
+all: src/detection/all
+all: src/overlayer/all
+all: src/translation/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: src/capture/preinstall
+preinstall: src/detection/preinstall
+preinstall: src/overlayer/preinstall
+preinstall: src/translation/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/visao-computacional.dir/clean
+clean: CMakeFiles/main.dir/clean
+clean: src/capture/clean
+clean: src/detection/clean
+clean: src/overlayer/clean
+clean: src/translation/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/visao-computacional.dir
+# Directory level rules for directory src/capture
+
+# Recursive "all" directory target.
+src/capture/all: src/capture/CMakeFiles/capture.dir/all
+.PHONY : src/capture/all
+
+# Recursive "preinstall" directory target.
+src/capture/preinstall:
+.PHONY : src/capture/preinstall
+
+# Recursive "clean" directory target.
+src/capture/clean: src/capture/CMakeFiles/capture.dir/clean
+.PHONY : src/capture/clean
+
+#=============================================================================
+# Directory level rules for directory src/detection
+
+# Recursive "all" directory target.
+src/detection/all: src/detection/CMakeFiles/detection.dir/all
+.PHONY : src/detection/all
+
+# Recursive "preinstall" directory target.
+src/detection/preinstall:
+.PHONY : src/detection/preinstall
+
+# Recursive "clean" directory target.
+src/detection/clean: src/detection/CMakeFiles/detection.dir/clean
+.PHONY : src/detection/clean
+
+#=============================================================================
+# Directory level rules for directory src/overlayer
+
+# Recursive "all" directory target.
+src/overlayer/all: src/overlayer/CMakeFiles/overlayer.dir/all
+.PHONY : src/overlayer/all
+
+# Recursive "preinstall" directory target.
+src/overlayer/preinstall:
+.PHONY : src/overlayer/preinstall
+
+# Recursive "clean" directory target.
+src/overlayer/clean: src/overlayer/CMakeFiles/overlayer.dir/clean
+.PHONY : src/overlayer/clean
+
+#=============================================================================
+# Directory level rules for directory src/translation
+
+# Recursive "all" directory target.
+src/translation/all: src/translation/CMakeFiles/translation.dir/all
+.PHONY : src/translation/all
+
+# Recursive "preinstall" directory target.
+src/translation/preinstall:
+.PHONY : src/translation/preinstall
+
+# Recursive "clean" directory target.
+src/translation/clean: src/translation/CMakeFiles/translation.dir/clean
+.PHONY : src/translation/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/visao-computacional.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/visao-computacional.dir/build.make CMakeFiles/visao-computacional.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/visao-computacional.dir/build.make CMakeFiles/visao-computacional.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marcelo/VSCode/visao-computacional/build/CMakeFiles --progress-num=1,2 "Built target visao-computacional"
-.PHONY : CMakeFiles/visao-computacional.dir/all
+CMakeFiles/main.dir/all: src/capture/CMakeFiles/capture.dir/all
+CMakeFiles/main.dir/all: src/detection/CMakeFiles/detection.dir/all
+CMakeFiles/main.dir/all: src/overlayer/CMakeFiles/overlayer.dir/all
+CMakeFiles/main.dir/all: src/translation/CMakeFiles/translation.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=5,6 "Built target main"
+.PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/visao-computacional.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/visao-computacional/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/visao-computacional.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/visao-computacional/build/CMakeFiles 0
-.PHONY : CMakeFiles/visao-computacional.dir/rule
+CMakeFiles/main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 0
+.PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.
-visao-computacional: CMakeFiles/visao-computacional.dir/rule
-.PHONY : visao-computacional
+main: CMakeFiles/main.dir/rule
+.PHONY : main
 
 # clean rule for target.
-CMakeFiles/visao-computacional.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/visao-computacional.dir/build.make CMakeFiles/visao-computacional.dir/clean
-.PHONY : CMakeFiles/visao-computacional.dir/clean
+CMakeFiles/main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
+.PHONY : CMakeFiles/main.dir/clean
+
+#=============================================================================
+# Target rules for target src/capture/CMakeFiles/capture.dir
+
+# All Build rule for target.
+src/capture/CMakeFiles/capture.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/capture/CMakeFiles/capture.dir/build.make src/capture/CMakeFiles/capture.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/capture/CMakeFiles/capture.dir/build.make src/capture/CMakeFiles/capture.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=1,2 "Built target capture"
+.PHONY : src/capture/CMakeFiles/capture.dir/all
+
+# Build rule for subdir invocation for target.
+src/capture/CMakeFiles/capture.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/capture/CMakeFiles/capture.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 0
+.PHONY : src/capture/CMakeFiles/capture.dir/rule
+
+# Convenience name for target.
+capture: src/capture/CMakeFiles/capture.dir/rule
+.PHONY : capture
+
+# clean rule for target.
+src/capture/CMakeFiles/capture.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/capture/CMakeFiles/capture.dir/build.make src/capture/CMakeFiles/capture.dir/clean
+.PHONY : src/capture/CMakeFiles/capture.dir/clean
+
+#=============================================================================
+# Target rules for target src/detection/CMakeFiles/detection.dir
+
+# All Build rule for target.
+src/detection/CMakeFiles/detection.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/detection/CMakeFiles/detection.dir/build.make src/detection/CMakeFiles/detection.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/detection/CMakeFiles/detection.dir/build.make src/detection/CMakeFiles/detection.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=3,4 "Built target detection"
+.PHONY : src/detection/CMakeFiles/detection.dir/all
+
+# Build rule for subdir invocation for target.
+src/detection/CMakeFiles/detection.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/detection/CMakeFiles/detection.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 0
+.PHONY : src/detection/CMakeFiles/detection.dir/rule
+
+# Convenience name for target.
+detection: src/detection/CMakeFiles/detection.dir/rule
+.PHONY : detection
+
+# clean rule for target.
+src/detection/CMakeFiles/detection.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/detection/CMakeFiles/detection.dir/build.make src/detection/CMakeFiles/detection.dir/clean
+.PHONY : src/detection/CMakeFiles/detection.dir/clean
+
+#=============================================================================
+# Target rules for target src/overlayer/CMakeFiles/overlayer.dir
+
+# All Build rule for target.
+src/overlayer/CMakeFiles/overlayer.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/overlayer/CMakeFiles/overlayer.dir/build.make src/overlayer/CMakeFiles/overlayer.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/overlayer/CMakeFiles/overlayer.dir/build.make src/overlayer/CMakeFiles/overlayer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=7,8 "Built target overlayer"
+.PHONY : src/overlayer/CMakeFiles/overlayer.dir/all
+
+# Build rule for subdir invocation for target.
+src/overlayer/CMakeFiles/overlayer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/overlayer/CMakeFiles/overlayer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 0
+.PHONY : src/overlayer/CMakeFiles/overlayer.dir/rule
+
+# Convenience name for target.
+overlayer: src/overlayer/CMakeFiles/overlayer.dir/rule
+.PHONY : overlayer
+
+# clean rule for target.
+src/overlayer/CMakeFiles/overlayer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/overlayer/CMakeFiles/overlayer.dir/build.make src/overlayer/CMakeFiles/overlayer.dir/clean
+.PHONY : src/overlayer/CMakeFiles/overlayer.dir/clean
+
+#=============================================================================
+# Target rules for target src/translation/CMakeFiles/translation.dir
+
+# All Build rule for target.
+src/translation/CMakeFiles/translation.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/translation/CMakeFiles/translation.dir/build.make src/translation/CMakeFiles/translation.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/translation/CMakeFiles/translation.dir/build.make src/translation/CMakeFiles/translation.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=9,10 "Built target translation"
+.PHONY : src/translation/CMakeFiles/translation.dir/all
+
+# Build rule for subdir invocation for target.
+src/translation/CMakeFiles/translation.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/translation/CMakeFiles/translation.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 0
+.PHONY : src/translation/CMakeFiles/translation.dir/rule
+
+# Convenience name for target.
+translation: src/translation/CMakeFiles/translation.dir/rule
+.PHONY : translation
+
+# clean rule for target.
+src/translation/CMakeFiles/translation.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/translation/CMakeFiles/translation.dir/build.make src/translation/CMakeFiles/translation.dir/clean
+.PHONY : src/translation/CMakeFiles/translation.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

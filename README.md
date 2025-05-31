@@ -1,1 +1,1 @@
-# visao-computacional
+Use ./run.sh no terminal.

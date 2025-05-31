@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/marcelo/VSCode/visao-computacional
+CMAKE_SOURCE_DIR = /home/marcelo/VSCode/hq-translator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/marcelo/VSCode/visao-computacional/build
+CMAKE_BINARY_DIR = /home/marcelo/VSCode/hq-translator/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/visao-computacional/build/CMakeFiles /home/marcelo/VSCode/visao-computacional/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles /home/marcelo/VSCode/hq-translator/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/visao-computacional/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/VSCode/hq-translator/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,76 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named visao-computacional
+# Target rules for targets named main
 
 # Build rule for target.
-visao-computacional: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 visao-computacional
-.PHONY : visao-computacional
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-visao-computacional/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/visao-computacional.dir/build.make CMakeFiles/visao-computacional.dir/build
-.PHONY : visao-computacional/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
+
+#=============================================================================
+# Target rules for targets named capture
+
+# Build rule for target.
+capture: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 capture
+.PHONY : capture
+
+# fast build rule for target.
+capture/fast:
+	$(MAKE) $(MAKESILENT) -f src/capture/CMakeFiles/capture.dir/build.make src/capture/CMakeFiles/capture.dir/build
+.PHONY : capture/fast
+
+#=============================================================================
+# Target rules for targets named detection
+
+# Build rule for target.
+detection: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 detection
+.PHONY : detection
+
+# fast build rule for target.
+detection/fast:
+	$(MAKE) $(MAKESILENT) -f src/detection/CMakeFiles/detection.dir/build.make src/detection/CMakeFiles/detection.dir/build
+.PHONY : detection/fast
+
+#=============================================================================
+# Target rules for targets named overlayer
+
+# Build rule for target.
+overlayer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 overlayer
+.PHONY : overlayer
+
+# fast build rule for target.
+overlayer/fast:
+	$(MAKE) $(MAKESILENT) -f src/overlayer/CMakeFiles/overlayer.dir/build.make src/overlayer/CMakeFiles/overlayer.dir/build
+.PHONY : overlayer/fast
+
+#=============================================================================
+# Target rules for targets named translation
+
+# Build rule for target.
+translation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 translation
+.PHONY : translation
+
+# fast build rule for target.
+translation/fast:
+	$(MAKE) $(MAKESILENT) -f src/translation/CMakeFiles/translation.dir/build.make src/translation/CMakeFiles/translation.dir/build
+.PHONY : translation/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/visao-computacional.dir/build.make CMakeFiles/visao-computacional.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -142,7 +194,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/visao-computacional.dir/build.make CMakeFiles/visao-computacional.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -150,7 +202,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/visao-computacional.dir/build.make CMakeFiles/visao-computacional.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -161,7 +213,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... visao-computacional"
+	@echo "... capture"
+	@echo "... detection"
+	@echo "... main"
+	@echo "... overlayer"
+	@echo "... translation"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

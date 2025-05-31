@@ -1,6 +1,5 @@
-#!/bin/bash
-cd build
-cmake .. || exit 1
-make || exit 1
-./visao-computacional
+rm -rf build && mkdir build && cd build
+cmake ..
+make
+./main
 cd ..

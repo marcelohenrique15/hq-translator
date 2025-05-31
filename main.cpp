@@ -1,11 +1,9 @@
-//USE ./run.sh PARA RODAR O PROGRAMA.
+#include "capture/webcam_capture.h"
 
 
-#include <iostream>
-#include <opencv2/opencv.hpp>
+//Use ./run.sh no terminal.
 
-int main()
-{
-    std::cout << "marcelaao\n";
-    return 0;
+int main() {
+    say_hello(); 
+
 }
