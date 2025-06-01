@@ -1,3 +1,4 @@
 OpenCV - Realidade aumentada
 Tesseract - Detecção de texto
-CPR - Integração de API via HTTP
+CPR - Requisições HTTP
+Nlohmann - Trabalhar com Json
