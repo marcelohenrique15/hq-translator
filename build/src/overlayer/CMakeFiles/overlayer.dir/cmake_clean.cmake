@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/overlayer.dir/overlay_renderer.cpp.o"
   "CMakeFiles/overlayer.dir/overlay_renderer.cpp.o.d"
-  "liboverlayer.a"
   "liboverlayer.pdb"
+  "liboverlayer.so"
 )
 
 # Per-language clean rules from dependency scanning.

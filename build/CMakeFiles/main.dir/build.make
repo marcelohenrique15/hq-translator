@@ -92,9 +92,9 @@ main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.cpp.o
 main: CMakeFiles/main.dir/build.make
-main: src/capture/libcapture.a
-main: src/detection/libdetection.a
-main: src/overlayer/liboverlayer.a
+main: src/capture/libcapture.so
+main: src/detection/libdetection.so
+main: src/overlayer/liboverlayer.so
 main: src/translation/libtranslation.a
 main: /usr/local/lib/libopencv_gapi.so.4.12.0
 main: /usr/local/lib/libopencv_stitching.so.4.12.0
@@ -149,6 +149,11 @@ main: /usr/local/lib/libopencv_flann.so.4.12.0
 main: /usr/local/lib/libopencv_photo.so.4.12.0
 main: /usr/local/lib/libopencv_imgproc.so.4.12.0
 main: /usr/local/lib/libopencv_core.so.4.12.0
+main: _deps/cpr-build/cpr/libcpr.so.1.10.4
+main: _deps/curl-build/lib/libcurl.so
+main: /usr/lib/x86_64-linux-gnu/libssl.so
+main: /usr/lib/x86_64-linux-gnu/libcrypto.so
+main: /usr/local/lib/libz.so
 main: CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)

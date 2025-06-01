@@ -1,0 +1,14 @@
+# Target labels
+ cpr-populate
+# Source files and their labels
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/CMakeFiles/cpr-populate
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/CMakeFiles/cpr-populate.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/CMakeFiles/cpr-populate-complete.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/cpr-populate-prefix/src/cpr-populate-stamp/cpr-populate-build.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/cpr-populate-prefix/src/cpr-populate-stamp/cpr-populate-configure.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/cpr-populate-prefix/src/cpr-populate-stamp/cpr-populate-download.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/cpr-populate-prefix/src/cpr-populate-stamp/cpr-populate-install.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/cpr-populate-prefix/src/cpr-populate-stamp/cpr-populate-mkdir.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/cpr-populate-prefix/src/cpr-populate-stamp/cpr-populate-patch.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/cpr-populate-prefix/src/cpr-populate-stamp/cpr-populate-test.rule
+/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/cpr-populate-prefix/src/cpr-populate-stamp/cpr-populate-update.rule

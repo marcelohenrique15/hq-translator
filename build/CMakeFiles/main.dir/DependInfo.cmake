@@ -17,6 +17,8 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/marcelo/VSCode/hq-translator/build/src/detection/CMakeFiles/detection.dir/DependInfo.cmake"
   "/home/marcelo/VSCode/hq-translator/build/src/overlayer/CMakeFiles/overlayer.dir/DependInfo.cmake"
   "/home/marcelo/VSCode/hq-translator/build/src/translation/CMakeFiles/translation.dir/DependInfo.cmake"
+  "/home/marcelo/VSCode/hq-translator/build/_deps/cpr-build/cpr/CMakeFiles/cpr.dir/DependInfo.cmake"
+  "/home/marcelo/VSCode/hq-translator/build/_deps/curl-build/lib/CMakeFiles/libcurl.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

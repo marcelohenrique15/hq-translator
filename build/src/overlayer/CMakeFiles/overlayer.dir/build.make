@@ -90,15 +90,67 @@ overlayer_OBJECTS = \
 # External object files for target overlayer
 overlayer_EXTERNAL_OBJECTS =
 
-src/overlayer/liboverlayer.a: src/overlayer/CMakeFiles/overlayer.dir/overlay_renderer.cpp.o
-src/overlayer/liboverlayer.a: src/overlayer/CMakeFiles/overlayer.dir/build.make
-src/overlayer/liboverlayer.a: src/overlayer/CMakeFiles/overlayer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library liboverlayer.a"
-	cd /home/marcelo/VSCode/hq-translator/build/src/overlayer && $(CMAKE_COMMAND) -P CMakeFiles/overlayer.dir/cmake_clean_target.cmake
+src/overlayer/liboverlayer.so: src/overlayer/CMakeFiles/overlayer.dir/overlay_renderer.cpp.o
+src/overlayer/liboverlayer.so: src/overlayer/CMakeFiles/overlayer.dir/build.make
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_gapi.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_stitching.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_aruco.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_bgsegm.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_bioinspired.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_ccalib.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_dnn_objdetect.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_dnn_superres.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_dpm.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_face.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_freetype.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_fuzzy.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_hfs.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_img_hash.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_intensity_transform.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_line_descriptor.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_mcc.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_quality.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_rapid.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_reg.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_rgbd.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_saliency.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_signal.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_stereo.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_structured_light.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_superres.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_surface_matching.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_tracking.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_videostab.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_wechat_qrcode.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_xfeatures2d.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_xobjdetect.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_xphoto.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_shape.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_highgui.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_datasets.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_plot.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_text.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_ml.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_phase_unwrapping.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_optflow.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_ximgproc.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_video.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_videoio.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_imgcodecs.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_objdetect.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_calib3d.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_dnn.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_features2d.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_flann.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_photo.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_imgproc.so.4.12.0
+src/overlayer/liboverlayer.so: /usr/local/lib/libopencv_core.so.4.12.0
+src/overlayer/liboverlayer.so: src/overlayer/CMakeFiles/overlayer.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library liboverlayer.so"
 	cd /home/marcelo/VSCode/hq-translator/build/src/overlayer && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/overlayer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-src/overlayer/CMakeFiles/overlayer.dir/build: src/overlayer/liboverlayer.a
+src/overlayer/CMakeFiles/overlayer.dir/build: src/overlayer/liboverlayer.so
 .PHONY : src/overlayer/CMakeFiles/overlayer.dir/build
 
 src/overlayer/CMakeFiles/overlayer.dir/clean:
