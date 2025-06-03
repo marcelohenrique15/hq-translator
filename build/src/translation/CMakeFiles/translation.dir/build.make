@@ -73,15 +73,15 @@ src/translation/CMakeFiles/translation.dir/translator.cpp.o: src/translation/CMa
 src/translation/CMakeFiles/translation.dir/translator.cpp.o: ../src/translation/translator.cpp
 src/translation/CMakeFiles/translation.dir/translator.cpp.o: src/translation/CMakeFiles/translation.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marcelo/VSCode/hq-translator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/translation/CMakeFiles/translation.dir/translator.cpp.o"
-	cd /home/marcelo/VSCode/hq-translator/build/src/translation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/translation/CMakeFiles/translation.dir/translator.cpp.o -MF CMakeFiles/translation.dir/translator.cpp.o.d -o CMakeFiles/translation.dir/translator.cpp.o -c /home/marcelo/VSCode/hq-translator/src/translation/translator.cpp
+	cd /home/marcelo/VSCode/hq-translator/build/src/translation && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/translation/CMakeFiles/translation.dir/translator.cpp.o -MF CMakeFiles/translation.dir/translator.cpp.o.d -o CMakeFiles/translation.dir/translator.cpp.o -c /home/marcelo/VSCode/hq-translator/src/translation/translator.cpp
 
 src/translation/CMakeFiles/translation.dir/translator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/translation.dir/translator.cpp.i"
-	cd /home/marcelo/VSCode/hq-translator/build/src/translation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marcelo/VSCode/hq-translator/src/translation/translator.cpp > CMakeFiles/translation.dir/translator.cpp.i
+	cd /home/marcelo/VSCode/hq-translator/build/src/translation && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marcelo/VSCode/hq-translator/src/translation/translator.cpp > CMakeFiles/translation.dir/translator.cpp.i
 
 src/translation/CMakeFiles/translation.dir/translator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/translation.dir/translator.cpp.s"
-	cd /home/marcelo/VSCode/hq-translator/build/src/translation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marcelo/VSCode/hq-translator/src/translation/translator.cpp -o CMakeFiles/translation.dir/translator.cpp.s
+	cd /home/marcelo/VSCode/hq-translator/build/src/translation && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marcelo/VSCode/hq-translator/src/translation/translator.cpp -o CMakeFiles/translation.dir/translator.cpp.s
 
 # Object files for target translation
 translation_OBJECTS = \

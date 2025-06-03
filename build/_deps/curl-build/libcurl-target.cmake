@@ -49,11 +49,11 @@ set_target_properties(CURL::libcurl PROPERTIES
   INTERFACE_LINK_LIBRARIES "dl;OpenSSL::SSL;OpenSSL::Crypto;ZLIB::ZLIB"
 )
 
-# Import target "CURL::libcurl" for configuration "Release"
-set_property(TARGET CURL::libcurl APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "CURL::libcurl" for configuration "Debug"
+set_property(TARGET CURL::libcurl APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(CURL::libcurl PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/home/marcelo/VSCode/hq-translator/build/_deps/curl-build/lib/libcurl.so"
-  IMPORTED_SONAME_RELEASE "libcurl.so"
+  IMPORTED_LOCATION_DEBUG "/home/marcelo/VSCode/hq-translator/build/_deps/curl-build/lib/libcurl-d.so"
+  IMPORTED_SONAME_DEBUG "libcurl-d.so"
   )
 
 # This file does not depend on other imported targets which have
