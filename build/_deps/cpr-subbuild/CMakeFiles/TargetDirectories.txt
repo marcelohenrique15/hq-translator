@@ -1,3 +1,0 @@
-/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/CMakeFiles/cpr-populate.dir
-/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/CMakeFiles/edit_cache.dir
-/home/marcelo/VSCode/hq-translator/build/_deps/cpr-subbuild/CMakeFiles/rebuild_cache.dir
