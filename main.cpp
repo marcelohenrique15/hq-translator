@@ -2,33 +2,45 @@
 #include "detection/text_detector.h"
 #include "overlayer/overlay_translator.h"
 #include "translation/translator.h"
-#include <iostream>
 
 using namespace std;
+using namespace cv;
 
 int main() {
     WebcamCapture webcam;
+    Overlay overlayer;
+    
 
-    if (!webcam.isOpened()) {
-        std::cerr << "Câmera não foi iniciada corretamente.\n";
+    if (!webcam.isOpened())
+    {
+        cerr << "Câmera não foi iniciada corretamente.\n";
         return -1;
     }
 
-    cv::Mat frame;
-    while (true) {
-        if (!webcam.readFrame(frame)) {
-            std::cerr << "Falha ao capturar frame.\n";
+    Mat frame;
+    string text = "Erwin Smith, the commander of the Survey Corps in Attack on Titan. ";
+    string translated_text = ask_ia(text);
+    cout << translated_text;
+    
+    while (true)
+    {
+        if (!webcam.readFrame(frame))
+        {
+            cerr << "Falha ao capturar frame.\n";
             break;
         }
-
-        cv::imshow("Webcam", frame);
-
-        if (cv::waitKey(1) == 27) { // Tecla ESC
+        
+        Rect textBox(100, 100, 300, 50);
+        overlayer.drawTextOverlay(frame, translated_text, textBox);
+        imshow("Webcam", frame);
+        
+        if (waitKey(1) == 27) // Tecla ESC para fechar programa
+        {
             break;
         }
     }
 
-    cv::destroyAllWindows();
+    destroyAllWindows();
     return 0;
 }
 

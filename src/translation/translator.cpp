@@ -1,6 +1,4 @@
 #include <translation/translator.h>
-#include <cpr/cpr.h>
-#include <nlohmann/json.hpp>
 
 using namespace nlohmann;
 using namespace std;
@@ -17,7 +15,7 @@ string ask_ia(const string& prompt)
     {
         {"contents", {{
             {"parts", {{
-                {"text", prompt}
+                {"text", "Traduza o seguinte texto para PT-BR, apenas diga a frase traduzida e nada mais: " + prompt}
             }}}
         }}}
     };
