@@ -28,6 +28,11 @@
   <property name="windowTitle">
    <string>HQ Translator</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	background-color: rrgb(43, 43, 43);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -46,6 +51,11 @@
      <width>1366</width>
      <height>768</height>
     </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+	background-color: rgb(244, 246, 248);
+}</string>
    </property>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
@@ -67,6 +77,13 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	border: 5px solid rgb(43, 43, 43);
+	border-radius: 4px;
+	
+}</string>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -82,6 +99,39 @@
      </item>
      <item>
       <layout class="QGridLayout" name="infoLayout">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* --- Estilo de Botão - Vermelho Moderno --- */
+
+QPushButton {
+    background-color: rgb(43, 43, 43);
+    color: rgb(244, 246, 248);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #2980b9;
+}
+
+QPushButton:pressed {
+    background-color: #1f618d;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Trocar Cam</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QGroupBox" name="formsHq">
          <property name="sizePolicy">
@@ -90,8 +140,20 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QGroupBox {
+	background-color: rgb(43, 43, 43);
+	border-radius: 4px;
+}
+
+QLabel {
+	background-color: rgb(43, 43, 43);
+	color: rgb(244, 246, 248);
+	font-weight: bold;
+}</string>
+         </property>
          <property name="title">
-          <string>Detalhes da HQ</string>
+          <string/>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <property name="topMargin">
@@ -109,6 +171,9 @@
             <property name="enabled">
              <bool>true</bool>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string>Carregando nome...</string>
             </property>
@@ -122,25 +187,26 @@
            </widget>
           </item>
           <item>
-           <widget class="QTextBrowser" name="sinopseHq"/>
+           <widget class="QTextBrowser" name="sinopseHq">
+            <property name="styleSheet">
+             <string notr="true">QTextBrowser {
+	background-color: rgb(43, 43, 43);
+	color: rgb(0, 0, 0);
+	border: none;
+}</string>
+            </property>
+           </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="pushButton">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string>Trocar Cam</string>
-         </property>
         </widget>
        </item>
        <item row="2" column="0">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
