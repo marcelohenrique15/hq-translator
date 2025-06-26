@@ -1,19 +1,23 @@
-#pragma once
-#include <string>
-#include <stdexcept>  // Para tratamento de exceções
+#ifndef TEXT_DETECTOR_H
+#define TEXT_DETECTOR_H
 
-/**
- * @namespace detection
- * @brief Namespace para funções de detecção de texto
- */
+#include <string>
+#include <vector>
+#include <opencv2/opencv.hpp>
+
 namespace detection {
 
-    /**
-     * @brief Extrai texto de uma imagem usando OCR
-     * @param image_path Caminho para o arquivo de imagem
-     * @return String com o texto detectado
-     * @throws std::runtime_error Se a imagem não puder ser processada
-     */
-    std::string extract_text_from_image(const std::string& image_path);
+    struct DetectedText {
+        std::string text;
+        cv::Rect bbox;
+    };
+
+    std::vector<DetectedText> detect_text_and_boxes(const cv::Mat& image);
+
+    void draw_text_boxes(cv::Mat& frame, const std::vector<DetectedText>& detected_texts);
+
+    cv::Mat preprocess_image(const cv::Mat& input_image);
 
 } // namespace detection
+
+#endif // TEXT_DETECTOR_H

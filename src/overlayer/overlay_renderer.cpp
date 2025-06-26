@@ -5,8 +5,8 @@ using namespace std;
 
 void Overlay::drawTextOverlay(Mat& frame, const string& translated_text, const Rect& origin)
 {
-    int fontFace = FONT_HERSHEY_SIMPLEX;
-    double fontScale = 0.5;
+    int fontFace = FONT_HERSHEY_PLAIN; // Outra boa opção, pode ter um estilo diferente // Melhor opção para tentar primeiro
+    double fontScale = 2.5;
     int thickness = 2;
     int baseline = 0;
     int margin = 10;
