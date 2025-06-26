@@ -24,14 +24,19 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(cpr)
 
-# módulos
+# Ensure this line is present and NOT commented out
 add_subdirectory(src/capture)
 add_subdirectory(src/detection)
 add_subdirectory(src/overlayer)
-add_subdirectory(src/translation)
+add_subdirectory(src/translation) # <--- THIS LINE IS CRUCIAL FOR 'translation' TARGET TO EXIST
 
-# executável principal
 add_executable(main main.cpp)
+
+# This line must come AFTER add_subdirectory(src/translation)
+target_link_directories(main PRIVATE
+    $<TARGET_FILE_DIR:translation>
+)
+
 target_link_libraries(main
   capture
   detection
@@ -41,4 +46,3 @@ target_link_libraries(main
   nlohmann_json::nlohmann_json
   cpr::cpr
 )
-
