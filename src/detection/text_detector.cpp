@@ -9,10 +9,10 @@
 
 namespace detection {
 
-    // Simplifiquei para garantir que ele aceite o maximo possivel
+    
     bool is_alphanumeric(const std::string& s) {
         if (s.empty()) return false;
-        // Permite espacos, letras e numeros, e alguns caracteres basicos de pontuacao
+        
         return std::all_of(s.begin(), s.end(), [](char c){ return ::isalnum(c) || ::isspace(c) || c == '.' || c == ',' || c == '-' || c == '/'; });
     }
 
@@ -52,10 +52,9 @@ namespace detection {
             return detected_texts;
         }
 
-        ocr->SetPageSegMode(tesseract::PSM_AUTO); // Mantive AUTO como um PSM geral
+        ocr->SetPageSegMode(tesseract::PSM_AUTO); 
 
-        // Whitelist de caracteres (ajuda a filtrar lixo antes)
-        // Adicionei espaco para o Tesseract reconhecer frases
+       
         ocr->SetVariable("tessedit_char_whitelist", "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ");
 
         ocr->SetImage(preprocessed_img.data, preprocessed_img.cols, preprocessed_img.rows,
@@ -77,8 +76,7 @@ namespace detection {
                 if (word != nullptr && strlen(word) > 0) {
                     float conf = ri->Confidence(tesseract::RIL_WORD);
 
-                    // --- AJUSTE AQUI: LIMIAR DE CONFIANCA MAIS BAIXO ---
-                    // Tentei 60%. Se ainda nao aparecer, baixe para 50, ou ate 0 para ver TUDO.
+                    // --- AJUSTAR AQUI: LIMIAR DE CONFIANCA MAIS BAIXO 
                     if (conf > 60 && word[0] != ' ' && is_alphanumeric(std::string(word)) ) {
                         int x1, y1, x2, y2;
                         if (ri->BoundingBox(tesseract::RIL_WORD, &x1, &y1, &x2, &y2)) {
