@@ -8,5 +8,5 @@ using namespace std;
 class Overlay
 {
     public:
-        static void drawTextOverlay(Mat& frame, const string& translated_text, const cv::Rect& origin);
+        static void drawTextOverlay(cv::Mat& frame, const std::string& translated_text, const cv::Rect& box);
 };

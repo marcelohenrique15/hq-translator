@@ -1,4 +1,4 @@
-#include "overlayer/overlay_translator.h"
+#include "overlayer/overlay_renderer.h"
 
 using namespace cv;
 using namespace std;
