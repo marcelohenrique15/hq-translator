@@ -1,35 +1,17 @@
-#include "capture/webcam_capture.h"
-#include "detection/text_detector.h"
-#include "overlayer/overlay_translator.h"
-#include "translation/translator.h"
-#include <iostream>
+#include <QApplication>
+#include "gui/frontprincipal.h"
 
-using namespace std;
+int main(int argc, char *argv[])
+{
+    // 1. Cria o objeto da aplicação Qt
+    QApplication a(argc, argv);
 
-int main() {
-    WebcamCapture webcam;
+    // 2. Cria a instância da janela principal
+    frontprincipal w;
 
-    if (!webcam.isOpened()) {
-        std::cerr << "Câmera não foi iniciada corretamente.\n";
-        return -1;
-    }
+    // 3. Mostra a janela
+    w.show();
 
-    cv::Mat frame;
-    while (true) {
-        if (!webcam.readFrame(frame)) {
-            std::cerr << "Falha ao capturar frame.\n";
-            break;
-        }
-
-        cv::imshow("Webcam", frame);
-
-        if (cv::waitKey(1) == 27) { // Tecla ESC
-            break;
-        }
-    }
-
-    cv::destroyAllWindows();
-    return 0;
+    // 4. Inicia o loop de eventos
+    return a.exec();
 }
-
-//Use ./run.sh no terminal.
