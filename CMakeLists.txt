@@ -3,6 +3,8 @@ project(hq_translator)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# Adiciona CXX flags para tentar mitigar problemas de ABI (se for o caso)
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -D_GLIBCXX_USE_CXX11_ABI=0") # Tente isso se persistir com [abi:cxx11]
 
 find_package(OpenCV REQUIRED)
 find_package(nlohmann_json REQUIRED)
@@ -24,25 +26,26 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(cpr)
 
-# Ensure this line is present and NOT commented out
+# Modulos
 add_subdirectory(src/capture)
-add_subdirectory(src/detection)
+add_subdirectory(src/detection) # <<< ESTE AQUI
 add_subdirectory(src/overlayer)
-add_subdirectory(src/translation) # <--- THIS LINE IS CRUCIAL FOR 'translation' TARGET TO EXIST
+add_subdirectory(src/translation)
 
+# Executavel principal
 add_executable(main main.cpp)
 
-# This line must come AFTER add_subdirectory(src/translation)
+# Garante que o linker encontre a libdetection.a
 target_link_directories(main PRIVATE
-    $<TARGET_FILE_DIR:translation>
+    $<TARGET_FILE_DIR:detection> # O diretorio de build da libdetection
 )
 
 target_link_libraries(main
   capture
-  detection
+  detection # <<< LINKA COM A BIBLIOTECA 'detection'
   overlayer
   translation
-  ${OpenCV_LIBS}
+  ${OpenCV_LIBS} # OpenCV para main e todas as dependencias de OpenCV (incluindo DNN se usada)
   nlohmann_json::nlohmann_json
   cpr::cpr
 )
