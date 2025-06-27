@@ -1,4 +1,0 @@
-OpenCV - Realidade aumentada
-Tesseract - Detecção de texto
-CPR - Requisições HTTP
-Nlohmann - Trabalhar com Json

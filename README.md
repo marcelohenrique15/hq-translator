@@ -3,7 +3,11 @@
 2. [Requisitos](#requisitos)
 3. [Execução](#execução)
 
+---
+
 ## Visão Geral
+
+---
 
 ## Requisitos
 
@@ -64,6 +68,9 @@ Para instalar a biblioteca Nlohmann, utilize:
 ```bash
 sudo apt-get -y install nlohmann-json3-dev
 ```
+
+---
+
 ## Execução
 
 Após instalar todas as dependências, clone este repositório:
@@ -77,4 +84,38 @@ Então execute:
 
 ```bash
 ./run.sh
+```
+
+---
+
+## Estrutura do Projeto
+
+```
+.
+├── CMakeLists.txt                    # Arquivo que configura o Build da raiz do projeto
+├── include                           # Pasta com todas as assinaturas das classes
+│   ├── capture
+│   │   └── webcam_capture.h           
+│   ├── detection
+│   │   └── text_detector.h            
+│   ├── overlayer
+│   │   └── overlay_renderer.h
+│   └── translation
+│       └── translate.h
+├── main.cpp                          # Lógica principal do programa
+├── README.md                         # Documentação do projeto                 
+├── run.sh                            # Script para buildar e executar o programa
+└── src                               # Pasta com todas classes do projeto
+    ├── capture
+    │   ├── CMakeLists.txt            # Arquivo que configura a build de webcam_capture.cpp
+    │   └── webcam_capture.cpp        # Responsável pela configuração da Webcam
+    ├── detection
+    │   ├── CMakeLists.txt            # Arquivo que configura a build de text_detector.cpp
+    │   └── text_detector.cpp         # Responsável pela configuração do Tesseract e sua detecção de texto
+    ├── overlayer
+    │   ├── CMakeLists.txt            # Arquivo que configura a build de overlay_renderer.cpp
+    │   └── overlay_renderer.cpp      # Responsável por renderizar a tradução do texto na Webcam
+    └── translation
+        ├── CMakeLists.txt            # Arquivo que configura a build de translate.cpp
+        └── translate.cpp             # Responsável por traduzir o texto detectado pelo Tesseract
 ```
