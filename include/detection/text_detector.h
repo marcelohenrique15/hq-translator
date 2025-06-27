@@ -1,9 +1,15 @@
-#ifndef TEXT_DETECTOR_H
-#define TEXT_DETECTOR_H
+#pragma once
 
 #include <string>
 #include <vector>
 #include <opencv2/opencv.hpp>
+#include <tesseract/baseapi.h>
+#include <leptonica/allheaders.h>
+#include <opencv2/imgproc.hpp>
+#include <iostream>
+#include <memory>
+#include <algorithm>
+#include <cctype>
 
 namespace detection {
 
@@ -18,6 +24,5 @@ namespace detection {
 
     cv::Mat preprocess_image(const cv::Mat& input_image);
 
-} // namespace detection
+} 
 
-#endif // TEXT_DETECTOR_H

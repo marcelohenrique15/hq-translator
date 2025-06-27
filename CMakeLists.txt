@@ -3,21 +3,24 @@ project(hq_translator)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# Adiciona CXX flags para tentar mitigar problemas de ABI (se for o caso)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -D_GLIBCXX_USE_CXX11_ABI=0") # Tente isso se persistir com [abi:cxx11]
 
+# Pacotes necessários
 find_package(OpenCV REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(TESSERACT REQUIRED tesseract)
 
+# Diretórios de include
 include_directories(
     ${CMAKE_SOURCE_DIR}/include
     ${OpenCV_INCLUDE_DIRS}
     ${TESSERACT_INCLUDE_DIRS}
 )
+
+# Diretórios de bibliotecas (link)
 link_directories(${TESSERACT_LIBRARY_DIRS})
 
+# CPR (HTTP client)
 include(FetchContent)
 FetchContent_Declare(
   cpr
@@ -26,26 +29,29 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(cpr)
 
-# Modulos
+# Subdiretórios dos módulos
 add_subdirectory(src/capture)
-add_subdirectory(src/detection) # <<< ESTE AQUI
+add_subdirectory(src/detection)
 add_subdirectory(src/overlayer)
 add_subdirectory(src/translation)
 
-# Executavel principal
+# Executável principal
 add_executable(main main.cpp)
 
-# Garante que o linker encontre a libdetection.a
-target_link_directories(main PRIVATE
-    $<TARGET_FILE_DIR:detection> # O diretorio de build da libdetection
+# Includes adicionais (ex: para Tesseract/Leptonica)
+target_include_directories(main PRIVATE
+    ${TESSERACT_INCLUDE_DIRS}
 )
 
+# Link final com bibliotecas principais
 target_link_libraries(main
   capture
-  detection # <<< LINKA COM A BIBLIOTECA 'detection'
+  detection
   overlayer
   translation
-  ${OpenCV_LIBS} # OpenCV para main e todas as dependencias de OpenCV (incluindo DNN se usada)
+  ${OpenCV_LIBS}
   nlohmann_json::nlohmann_json
   cpr::cpr
+  ${TESSERACT_LIBRARIES}
+  -llept
 )

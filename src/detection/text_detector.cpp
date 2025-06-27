@@ -1,11 +1,5 @@
 #include "detection/text_detector.h"
-#include <tesseract/baseapi.h>
-#include <leptonica/allheaders.h>
-#include <opencv2/imgproc.hpp>
-#include <iostream>
-#include <memory>
-#include <algorithm>
-#include <cctype>
+
 
 namespace detection {
 
@@ -47,7 +41,7 @@ namespace detection {
         cv::Mat preprocessed_img = preprocess_image(image);
 
         std::unique_ptr<tesseract::TessBaseAPI> ocr(new tesseract::TessBaseAPI());
-        if(ocr->Init(nullptr, "por+eng", tesseract::OEM_LSTM_ONLY)) {
+        if(ocr->Init("/usr/local/share/tessdata/", "eng", tesseract::OEM_LSTM_ONLY)) {
             std::cerr << "Falha ao inicializar Tesseract. Verifique se os arquivos .traineddata estao instalados." << std::endl;
             return detected_texts;
         }
@@ -55,7 +49,7 @@ namespace detection {
         ocr->SetPageSegMode(tesseract::PSM_AUTO); 
 
        
-        ocr->SetVariable("tessedit_char_whitelist", "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ");
+        ocr->SetVariable("tessedit_char_whitelist", "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ");
 
         ocr->SetImage(preprocessed_img.data, preprocessed_img.cols, preprocessed_img.rows,
                       preprocessed_img.channels(), preprocessed_img.step);

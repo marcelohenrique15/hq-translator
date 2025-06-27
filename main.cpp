@@ -1,6 +1,6 @@
 #include "capture/webcam_capture.h"
 #include "detection/text_detector.h"
-#include "overlayer/overlay_translator.h"
+#include "overlayer/overlay_renderer.h"
 #include <translation/translate.h>
 #include <string>
 #include <iostream>
@@ -47,32 +47,7 @@ int main() {
 
     string text_to_translate_fixed = "SHINZO WO SASAGEYO";
     string search_query = "Attack on Titan";
-    string api_key = "AIzaSyCJCkN5Ep0mxtPysCkxCaedw5BuOFJJX38"; // <<<< ATENCAO: COLOQUE SUA CHAVE REAL E VALIDA AQUI
-    static Gemini ai(api_key);
-
-    cout << "\n--- Testando traducao de 'SHINZO WO SASAGEYO' (fora do loop) ---\n";
-    string translated_shinzou_initial_raw = ai.translate(text_to_translate_fixed);
-    string translated_shinzou_initial = trim(translated_shinzou_initial_raw);
-    cout << "Texto traduzido: " << translated_shinzou_initial << endl;
-
-    cout << "\n--- Testando pesquisa por 'Attack on Titan' (fora do loop) ---\n";
-    string search_result_raw_initial = ai.search(search_query);
-    string anime_name_initial;
-string synopsis_initial;
-
-    stringstream ss_initial(search_result_raw_initial);
-    string line_initial;
-    while (getline(ss_initial, line_initial)) {
-        anime_name_initial = extract_value(line_initial, "ANIME: ");
-        if (!anime_name_initial.empty()) continue;
-        synopsis_initial = extract_value(line_initial, "SINOPSE: ");
-        if (!synopsis_initial.empty()) continue;
-    }
-    if (anime_name_initial.empty()) anime_name_initial = "N/A";
-    if (synopsis_initial.empty()) synopsis_initial = "N/A";
-
-    cout << "ANIME: " << anime_name_initial << endl;
-    cout << "SINOPSE: " << synopsis_initial << endl;
+    static Gemini ai;
 
     vector<detection::DetectedText> current_detected_texts;
 
