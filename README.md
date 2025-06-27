@@ -63,6 +63,13 @@ make -j `nproc`
 sudo make install
 ```
 
+Agora instale o modelo treinado para detectar textos em inglês:
+
+```bash
+wget https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/main/eng.traineddata
+sudo mv *.traineddata /usr/local/share/tessdata
+```
+
 ### Nlohmann
 Essa biblioteca é responsável por permitir que o programa trabalhe utilizando Json, assim será possível fazer requisições para tradução do texto detectado pelo Tesseract.
 
