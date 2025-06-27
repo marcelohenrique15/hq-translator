@@ -9,14 +9,14 @@ Essa biblioteca é responsável por implementar as ferramentas de visão computa
 
 Utilize os seguintes comandos:
 
-´´´
+´´´bash
 sudo apt-get update
 sudo apt install libopencv-dev
 ´´´
 
 Confirme a instalação com o comando:
 
-´´´
+´´´bash
 dpkg -l libopencv-dev
 ´´´
 Deverá ter como resposta a versão do OpenCV que foi instalada.
@@ -26,19 +26,19 @@ O Tesseract é a API responsável pela IA que irá detectar textos mostrados nas
 
 Para instalar o Leptonica (dependência do Tesseract), utilize o seguinte comando:
 
-´´´
+´´´bash
 sudo apt install libleptonica-dev
 ´´´
 
 Agora, instale bibliotecas que servirão para ler diferentes tipos de imagem:
 
-´´´
+´´´bash
 sudo apt-get install libpng-dev libjpeg-dev libtiff-dev libgif-dev libwebp-dev libopenjp2-7-dev zlib1g-dev
 ´´´
 
 Para instalar o Tesseract, utilize o seguinte comando:
 
-´´´
+´´´bash
 cd ~/Desktop
 wget https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.3.0.tar.gz
 tar -xzvf 5.3.0.tar.gz 
@@ -55,13 +55,13 @@ Essa biblioteca é responsável por permitir que o programa trabalhe utilizando 
 
 Para instalar a biblioteca Nlohmann, utilize:
 
-´´´
+´´´bash
 sudo apt-get -y install nlohmann-json3-dev
 ´´´
 # Executar o programa
 
 Após instalar todas as dependências, execute o programa com o seguinte comando:
 
-´´´
+´´´bash
 ./run.sh
 ´´´
