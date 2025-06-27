@@ -1,8 +1,7 @@
 ### Índice
 1. [Visão Geral](#visão-geral)
-2. [Dependências](#dependências)
-3. [Requisitos](#requisitos)
-4. [Execução](#execução)
+2. [Requisitos](#requisitos)
+3. [Execução](#execução)
 
 ## Visão Geral
 
