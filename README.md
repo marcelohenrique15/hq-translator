@@ -40,13 +40,13 @@ Para instalar o Tesseract, utilize o seguinte comando:
 
 ´´´
 cd ~/Desktop
-wget https://github.com/DanBloomberg/leptonica/releases/download/1.83.1/leptonica-1.83.1.tar.gz
-tar -xzvf leptonica-1.83.1.tar.gz
-cd leptonica-1.83.1
+wget https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.3.0.tar.gz
+tar -xzvf 5.3.0.tar.gz 
+cd tesseract-5.3.0/
 mkdir build
 cd build
 cmake ..
-make -j`nproc`
+make -j `nproc`
 sudo make install
 ´´´
 
