@@ -1,10 +1,17 @@
-# Sobre o projeto
+### Índice
+1. [Visão Geral](#visão-geral)
+2. [Dependências](#dependências)
+3. [Requisitos](#requisitos)
+4. [Execução](#execução)
 
-# Dependências
+## Visão Geral
+
+## Requisitos
 
 É necessário executar o programa no sistema operacional Ubuntu 22.04, além disso, será necessário instalar as bibliotecas abaixo e ter uma Webcam.
 
-## OpenCV
+### OpenCV
+
 Essa biblioteca é responsável por implementar as ferramentas de visão computacional que serão utilizadas.
 
 Utilize os seguintes comandos:
@@ -21,7 +28,7 @@ dpkg -l libopencv-dev
 ```
 Deverá ter como resposta a versão do OpenCV que foi instalada.
 
-## Leptonica e Tesseract
+### Leptonica e Tesseract
 O Tesseract é a API responsável pela IA que irá detectar textos mostrados nas imagens, e no caso deste projeto, detectará através da Webcam.
 
 Para instalar o Leptonica (dependência do Tesseract), utilize o seguinte comando:
@@ -50,7 +57,7 @@ make -j `nproc`
 sudo make install
 ```
 
-## Nlohmann
+### Nlohmann
 Essa biblioteca é responsável por permitir que o programa trabalhe utilizando Json, assim será possível fazer requisições para tradução do texto detectado pelo Tesseract.
 
 Para instalar a biblioteca Nlohmann, utilize:
@@ -58,9 +65,16 @@ Para instalar a biblioteca Nlohmann, utilize:
 ```bash
 sudo apt-get -y install nlohmann-json3-dev
 ```
-# Executar o programa
+## Execução
 
-Após instalar todas as dependências, execute o programa com o seguinte comando:
+Após instalar todas as dependências, clone este repositório:
+
+```bash
+git clone https://github.com/marcelohenrique15/hq-translator.git
+cd hq-translator
+```
+
+Então execute:
 
 ```bash
 ./run.sh
