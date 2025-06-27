@@ -1,15 +1,13 @@
 #include <translation/translate.h>
 #include <iostream>
 
-using namespace std;
-
 Gemini::Gemini(const string& api_key) : api_key(api_key) {}
 
 string Gemini::make_gemini_request(const nlohmann::json& body) 
 {
     const string url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + api_key;
 
-    Response r = Post(
+    cpr::Response r = Post(
         Url{url},
         Header{{"Content-Type", "application/json"}},
         Body{body.dump()}

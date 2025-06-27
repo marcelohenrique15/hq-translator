@@ -10,7 +10,7 @@ namespace detection {
         return std::all_of(s.begin(), s.end(), [](char c){ return ::isalnum(c) || ::isspace(c) || c == '.' || c == ',' || c == '-' || c == '/'; });
     }
 
-    cv::Mat preprocess_image(const cv::Mat& input_image) {
+        cv::Mat preprocess_image(const cv::Mat& input_image) {
         cv::Mat gray_image;
         cv::cvtColor(input_image, gray_image, cv::COLOR_BGR2GRAY);
 
@@ -21,10 +21,10 @@ namespace detection {
         cv::adaptiveThreshold(processed_image, processed_image, 255,
                               cv::ADAPTIVE_THRESH_GAUSSIAN_C, cv::THRESH_BINARY, 21, 5);
 
-        cv::bitwise_not(processed_image, processed_image);
+        //cv::bitwise_not(processed_image, processed_image);
 
-        cv::Mat kernel_dilate = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(2,2));
-        cv::dilate(processed_image, processed_image, kernel_dilate, cv::Point(-1,-1), 1);
+        // cv::Mat kernel_dilate = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(2,2));
+        // cv::dilate(processed_image, processed_image, kernel_dilate, cv::Point(-1,-1), 1);
 
         cv::imshow("Imagem Pre-Processada (Tesseract)", processed_image);
 

@@ -8,53 +8,31 @@
 #include <sstream>
 #include <chrono>
 #include <thread>
+#include <unordered_map>
 
 using namespace std;
 using namespace cv;
 using namespace std::chrono;
 
-string trim(const string& str) {
-    size_t first = str.find_first_not_of(" \t\n\r\f\v");
-    if (string::npos == first) {
-        return str;
-    }
-    size_t last = str.find_last_not_of(" \t\n\r\f\v");
-    return str.substr(first, (last - first + 1));
-}
-
-string extract_value(const string& line, const string& prefix) {
-    size_t pos = line.find(prefix);
-    if (pos != string::npos) {
-        return trim(line.substr(pos + prefix.length()));
-    }
-    return "";
-}
-
 int main() {
     WebcamCapture webcam;
     Overlay overlayer;
+    Gemini ai;
 
-    if (!webcam.isOpened())
-    {
+    if (!webcam.isOpened()) {
         cerr << "Camera nao foi iniciada corretamente.\n";
         return -1;
     }
 
     Mat frame;
-
     long long last_detection_time = 0;
-    long long detection_interval_ms = 1000; // Detectar a cada 1 segundo
-
-    string text_to_translate_fixed = "SHINZO WO SASAGEYO";
-    string search_query = "Attack on Titan";
-    static Gemini ai;
+    long long detection_interval_ms = 1000;
 
     vector<detection::DetectedText> current_detected_texts;
+    unordered_map<string, string> translation_cache;
 
-    while (true)
-    {
-        if (!webcam.readFrame(frame))
-        {
+    while (true) {
+        if (!webcam.readFrame(frame)) {
             cerr << "Falha ao capturar frame.\n";
             break;
         }
@@ -65,13 +43,25 @@ int main() {
             current_detected_texts = detection::detect_text_and_boxes(frame);
         }
 
-        detection::draw_text_boxes(frame, current_detected_texts);
+        for (const auto& dt : current_detected_texts) {
+            string translated;
+
+            // Verifica se o texto já foi traduzido anteriormente
+            auto it = translation_cache.find(dt.text);
+            if (it != translation_cache.end()) {
+                translated = it->second;
+            } else {
+                translated = ai.translate(dt.text);
+                translation_cache[dt.text] = translated;
+            }
+
+            Overlay::drawTextOverlay(frame, translated, dt.bbox);
+        }
 
         imshow("Webcam", frame);
 
-        if (waitKey(1) == 27)
-        {
-            break;
+        if (waitKey(1) == 27) {
+            break;  // Tecla ESC para sair
         }
     }
 
