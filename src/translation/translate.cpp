@@ -37,11 +37,23 @@ string Gemini::translate(const string& text_to_translate) {
     json body = {
         {"contents", {{
             {"parts", {{
-                {"text", "Traduza APENAS o seguinte texto para o portugues, usando somente caracteres ASCII basicos (sem acentos ou caracteres especiais como 'c'), sem nenhuma explicacao adicional ou contexto, e SEM PONTUACAO FINAL: " + text_to_translate}
+                {"text", "Traduza APENAS o seguinte texto para o portugues brasileiro, usando SOMENTE letras basicas do alfabeto (a-z, A-Z), numeros (0-9) e espacos. NAO use acentos, cedilha, til ou qualquer caractere especial. Responda APENAS com a traducao, sem explicacoes: " + text_to_translate}
             }}}
         }}}
     };
-    return make_gemini_request(body);
+    
+    string result = make_gemini_request(body);
+    
+    // Limpar caracteres especiais que possam ter sobrado
+    string cleaned_result;
+    for (char c : result) {
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || 
+            (c >= '0' && c <= '9') || c == ' ' || c == '.' || c == ',' || c == '!') {
+            cleaned_result += c;
+        }
+    }
+    
+    return cleaned_result;
 }
 
 string Gemini::search(const string& query) {

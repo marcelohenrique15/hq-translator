@@ -5,22 +5,26 @@ using namespace std;
 
 void Overlay::drawTextOverlay(Mat& frame, const string& translated_text, const Rect& origin)
 {
-    int fontFace = FONT_HERSHEY_PLAIN; // Outra boa opção, pode ter um estilo diferente // Melhor opção para tentar primeiro
-    double fontScale = 2.5;
+    int fontFace = FONT_HERSHEY_PLAIN;
+    double fontScale = 2.0;
     int thickness = 2;
     int baseline = 0;
-    int margin = 10;
 
-    // Medir tamanho do texto
+    // PASSO 1: Usar inpainting para remover o texto original
+    Mat mask = Mat::zeros(frame.size(), CV_8UC1);
+    rectangle(mask, origin, Scalar(255), FILLED);
+    
+    Mat inpainted;
+    inpaint(frame, mask, inpainted, 3, INPAINT_TELEA);
+    inpainted.copyTo(frame);
+
+    // PASSO 2: Desenhar o texto traduzido
     Size textSize = getTextSize(translated_text, fontFace, fontScale, thickness, &baseline);
-
-    // Definir a caixa adaptada ao texto com margem
-    Rect box(origin.x, origin.y, textSize.width + 2 * margin, textSize.height + 2 * margin);
-
-    // Desenhar caixa preta opaca
-    rectangle(frame, box, Scalar(0, 0, 0), FILLED);
-
-    // Desenhar texto centralizado dentro da caixa
-    Point textOrg(box.x + margin, box.y + textSize.height + margin / 2);
-    putText(frame, translated_text, textOrg, fontFace, fontScale, Scalar(255, 255, 255), thickness);
+    
+    Point textOrg(
+        origin.x + (origin.width - textSize.width) / 2,
+        origin.y + (origin.height + textSize.height) / 2
+    );
+    
+    putText(frame, translated_text, textOrg, fontFace, fontScale, Scalar(0, 0, 0), thickness);
 }
