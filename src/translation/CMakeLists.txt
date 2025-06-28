@@ -1,5 +1,4 @@
 # src/translation/CMakeLists.txt
-
 add_library(translation STATIC
     translate.cpp
 )

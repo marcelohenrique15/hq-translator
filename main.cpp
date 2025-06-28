@@ -2,6 +2,7 @@
 #include "detection/text_detector.h"
 #include "overlayer/overlay_renderer.h"
 #include <translation/translate.h>
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -17,6 +18,7 @@ using namespace std::chrono;
 int main() {
     WebcamCapture webcam;
     Overlay overlayer;
+    Detector tesseract;
     Gemini ai;
 
     if (!webcam.isOpened()) {
@@ -25,11 +27,13 @@ int main() {
     }
 
     Mat frame;
+
+    // Servirá para cronometrar a detecção
     long long last_detection_time = 0;
     long long detection_interval_ms = 1000;
 
-    vector<detection::DetectedText> current_detected_texts;
     unordered_map<string, string> translation_cache;
+    vector<Detector::TextDetection> detected_text;
 
     while (true) {
         if (!webcam.readFrame(frame)) {
@@ -38,24 +42,29 @@ int main() {
         }
 
         long long current_time = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-        if (current_time - last_detection_time >= detection_interval_ms) {
+        if (current_time - last_detection_time >= detection_interval_ms) 
+        {
             last_detection_time = current_time;
-            current_detected_texts = detection::detect_text_and_boxes(frame);
+            detected_text = tesseract.detect_text_box(frame);
         }
 
-        for (const auto& dt : current_detected_texts) {
+        for (const auto& dt : detected_text) {
             string translated;
 
             // Verifica se o texto já foi traduzido anteriormente
             auto it = translation_cache.find(dt.text);
-            if (it != translation_cache.end()) {
+            if (it != translation_cache.end()) 
+            {
                 translated = it->second;
-            } else {
+            } 
+            
+            else 
+            {
                 translated = ai.translate(dt.text);
                 translation_cache[dt.text] = translated;
             }
 
-            Overlay::drawTextOverlay(frame, translated, dt.bbox);
+            Overlay::drawTextOverlay(frame, translated, dt.box);
         }
 
         imshow("Webcam", frame);
