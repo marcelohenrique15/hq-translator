@@ -42,6 +42,8 @@ Mat Detector::preprocess_image(const Mat& frame)
 
     // imshow("tesseract", processed_frame);
 
+    // imshow("tesseract", processed_frame);
+
     return processed_frame;
 }
 
