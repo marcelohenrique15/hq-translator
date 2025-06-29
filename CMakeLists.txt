@@ -54,4 +54,5 @@ target_link_libraries(main
   cpr::cpr
   ${TESSERACT_LIBRARIES}
   -llept
+  -larchive
 )
