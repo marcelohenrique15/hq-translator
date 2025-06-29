@@ -10,9 +10,10 @@ class WebcamCapture
         VideoCapture cap;
 
     public:
-        WebcamCapture(int cam = 0);
+        WebcamCapture(int cam = 0, int width = 640, int height = 480, double fps = 30.0);
         ~WebcamCapture();
 
         bool isOpened() const;
         bool readFrame(Mat& frame);
 };
+

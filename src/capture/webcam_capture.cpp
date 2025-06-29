@@ -3,12 +3,17 @@
 using namespace cv;
 using namespace std;
 
-WebcamCapture::WebcamCapture(int cam) : cap(cam)
+WebcamCapture::WebcamCapture(int cam, int width, int height, double fps) : cap(cam)
 {
     if(!cap.isOpened())
     {
-        cout << "Erro ao ligar a câmera.";
+        cout << "Erro ao ligar a câmera.\n";
+        return;
     }
+
+    cap.set(CAP_PROP_FRAME_WIDTH, width);
+    cap.set(CAP_PROP_FRAME_HEIGHT, height);
+    cap.set(CAP_PROP_FPS, fps);
 }
 
 WebcamCapture::~WebcamCapture()

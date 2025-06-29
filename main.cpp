@@ -1,7 +1,7 @@
 #include "capture/webcam_capture.h"
 #include "detection/text_detector.h"
 #include "overlayer/overlay_renderer.h"
-#include <translation/translate.h>
+#include "translation/translate.h"
 
 #include <string>
 #include <iostream>
@@ -10,6 +10,7 @@
 #include <chrono>
 #include <thread>
 #include <unordered_map>
+
 
 using namespace std;
 using namespace cv;
@@ -23,14 +24,14 @@ int main() {
 
     if (!webcam.isOpened()) {
         cerr << "Camera nao foi iniciada corretamente.\n";
-        return -1;
+        return 0;
     }
 
     Mat frame;
 
     // Servirá para cronometrar a detecção
     long long last_detection_time = 0;
-    long long detection_interval_ms = 1000;
+    long long detection_interval_ms = 200;
 
     unordered_map<string, string> translation_cache;
     vector<Detector::TextDetection> detected_text;
@@ -40,7 +41,8 @@ int main() {
             cerr << "Falha ao capturar frame.\n";
             break;
         }
-
+        
+        // Conta o tempo para cronometrar a detecção
         long long current_time = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
         if (current_time - last_detection_time >= detection_interval_ms) 
         {
