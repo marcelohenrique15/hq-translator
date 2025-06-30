@@ -49,7 +49,7 @@ vector<Detector::TextDetection> Detector::detect_text_box(const Mat& frame)
     Mat processed_frame = preprocess_image(frame);
 
     unique_ptr<TessBaseAPI> ocr(new TessBaseAPI());                     // Cria um objeto único (ocr) para acessar a API do Tesseract
-    ocr->Init("/usr/local/share/tessdata/", "eng", OEM_LSTM_ONLY);   // Escolhe o arquivo do modelo de IA treinada para detecção de texto
+    ocr->Init("/usr/local/share/tessdata/", "eng", OEM_LSTM_ONLY);   // Escolhe o arquivo do modelo de IA treinada para detecção de texto  (ocr->Init("/usr/share/tesseract-ocr/4.00/tessdata", "eng", OEM_LSTM_ONLY);)
     ocr->SetPageSegMode(PSM_AUTO);                                      // Informa como os textos serão lidos (por palavra, por bloco, etc.)
 
     // Passa a lista de caracteres que será permitido ser lido pelo Tesseract
@@ -102,7 +102,6 @@ vector<Detector::TextDetection> Detector::detect_text_box(const Mat& frame)
                     }
                 }
             } 
-            delete[] word; // Libera a memória após o fim da utilidade do texto atual, pronto para uma nova detecção
         }
         while(data_read->Next(RIL_TEXTLINE));
         delete data_read;

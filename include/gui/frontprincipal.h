@@ -1,5 +1,4 @@
-#ifndef FRONTPRINCIPAL_H
-#define FRONTPRINCIPAL_H
+#pragma once
 
 #include <QMainWindow>
 #include <QImage>
@@ -27,5 +26,3 @@ class frontprincipal : public QMainWindow
         QThread * m_cameraThread;
         VisionServices* m_visionServices;
 };
-
-#endif // FRONTPRINCIPAL_H
