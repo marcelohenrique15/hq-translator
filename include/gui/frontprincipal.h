@@ -5,7 +5,7 @@
 #include <QImage>
 
 class QThread;
-class CameraWorker;
+class VisionServices;
 
 namespace Ui {
 class frontprincipal;
@@ -25,7 +25,7 @@ class frontprincipal : public QMainWindow
     private:
         Ui::frontprincipal *ui;
         QThread * m_cameraThread;
-        CameraWorker* m_cameraWorker;
+        VisionServices* m_visionServices;
 };
 
 #endif // FRONTPRINCIPAL_H

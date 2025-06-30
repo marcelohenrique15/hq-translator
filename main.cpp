@@ -1,4 +1,60 @@
-#include "capture/webcam_capture.h"
+#include "gui/frontprincipal.h"
+#include <QApplication>
+
+int main(int argc, char *argv[]){
+
+    //cria a aplicação qt
+    QApplication a(argc, argv);
+
+    //cria a janela principal
+    frontprincipal w;
+
+    //mostra a janela
+    w.show();
+
+    return a.exec();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #include "capture/webcam_capture.h"
 #include "detection/text_detector.h"
 #include "overlayer/overlay_renderer.h"
 #include <translation/translate.h>
@@ -76,4 +132,4 @@ int main() {
 
     destroyAllWindows();
     return 0;
-}
+} */
