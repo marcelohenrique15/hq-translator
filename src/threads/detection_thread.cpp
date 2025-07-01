@@ -25,8 +25,8 @@ DetectionThread::DetectionThread(
     detectedQueue(outputQueue),
     toDetectMutex(inputMtx),
     detectedMutex(outputMtx),
-    inCondition(inCondition),
-    outCondition(outCondition),
+    inCondition(inputCond),
+    outCondition(outputCond),
     running(false){}
 
 void DetectionThread::start()
