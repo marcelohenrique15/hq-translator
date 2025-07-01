@@ -8,17 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(OpenCV REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(PkgConfig REQUIRED)
+
+# Tesseract e Leptonica
 pkg_check_modules(TESSERACT REQUIRED tesseract)
-
-# Diretórios de include
-include_directories(
-    ${CMAKE_SOURCE_DIR}/include
-    ${OpenCV_INCLUDE_DIRS}
-    ${TESSERACT_INCLUDE_DIRS}
-)
-
-# Diretórios de bibliotecas (link)
-link_directories(${TESSERACT_LIBRARY_DIRS})
+pkg_check_modules(LEPTONICA REQUIRED lept)
 
 # CPR (HTTP client)
 include(FetchContent)
@@ -29,6 +22,10 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(cpr)
 
+# Biblioteca de cabeçalhos para struct/
+add_library(struct_utils INTERFACE)
+target_include_directories(struct_utils INTERFACE ${CMAKE_SOURCE_DIR}/struct)
+
 # Subdiretórios dos módulos
 add_subdirectory(src/capture)
 add_subdirectory(src/detection)
@@ -36,25 +33,27 @@ add_subdirectory(src/overlayer)
 add_subdirectory(src/translation)
 add_subdirectory(src/threads)
 
-
 # Executável principal
 add_executable(main main.cpp)
 
-# Includes adicionais (ex: para Tesseract/Leptonica)
+# Includes específicos do executável
 target_include_directories(main PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
     ${TESSERACT_INCLUDE_DIRS}
+    ${LEPTONICA_INCLUDE_DIRS}
 )
 
-# Link final com bibliotecas principais
+# Link com bibliotecas
 target_link_libraries(main
-  capture
+  threads
   detection
+  capture
   overlayer
   translation
-  threads
+  struct_utils
   ${OpenCV_LIBS}
   nlohmann_json::nlohmann_json
   cpr::cpr
   ${TESSERACT_LIBRARIES}
-  -llept
+  ${LEPTONICA_LIBRARIES}
 )

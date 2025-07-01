@@ -1,14 +1,11 @@
-# src/translation/CMakeLists.txt
 add_library(translation STATIC
     LibreTranslate.cpp
 )
 
-# Adicione esta linha para que translate.cpp encontre translate.h
-target_include_directories(translation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(translation PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
-# Esta linha já estava correta para expor os includes para outros targets
 target_include_directories(translation PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
 

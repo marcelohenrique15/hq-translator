@@ -1,6 +1,5 @@
-#include <optional>
+#pragma once
 
-#include "translation/json.hpp"
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
@@ -15,6 +14,5 @@ class LibreTranslateAPI {
     json languages();
     json detect(std::string q);
     std::string translateText(std::string q, std::string source, std::string target);
-
 };
 

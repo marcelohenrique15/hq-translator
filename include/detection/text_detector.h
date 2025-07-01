@@ -9,6 +9,8 @@
 #include <vector>
 #include <iostream>
 
+#include "struct/struct_data.h"
+
 class Detector
 {
 private:
@@ -16,12 +18,5 @@ private:
     cv::Mat preprocess_image(const cv::Mat& frame);
 
 public:
-    struct TextDetection
-    {
-        std::string text;
-        cv::Rect box;
-        std::string translated;
-    };
-
-    std::vector<TextDetection> detect_text_box(const cv::Mat& frame);
+    std::vector<textData> detect_text_box(const cv::Mat& frame);
 };

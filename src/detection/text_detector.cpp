@@ -42,14 +42,12 @@ Mat Detector::preprocess_image(const Mat& frame)
 
     // imshow("tesseract", processed_frame);
 
-    // imshow("tesseract", processed_frame);
-
     return processed_frame;
 }
 
-vector<Detector::TextDetection> Detector::detect_text_box(const Mat& frame)
+vector<textData> Detector::detect_text_box(const Mat& frame)
 {
-    vector<TextDetection> detected_texts;   // Serivrá para guardar os textos detectados e suas boxes em um array.
+    vector<textData> detected_texts;   // Serivrá para guardar os textos detectados e suas boxes em um array.
     Mat processed_frame = preprocess_image(frame);
 
     unique_ptr<TessBaseAPI> ocr(new TessBaseAPI());                     // Cria um objeto único (ocr) para acessar a API do Tesseract
@@ -98,11 +96,11 @@ vector<Detector::TextDetection> Detector::detect_text_box(const Mat& frame)
                     if (bbox.width > min_width && bbox.height > min_height && bbox.width < max_width && bbox.height < max_height)
                     {
                         // Salva a box e o texto detectados, depois guarda esses valores no array criado para que possa ser retornado.
-                        TextDetection detected;
-                        detected.text = string(word);
+                        textData detected;
+                        detected.original = string(word);
                         detected.box = bbox;
                         detected_texts.push_back(detected);
-                        cout << "DEBUG Tesseract - Detectado: '" << detected.text << "' Confianca: " << conf << " BBox: (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << endl;
+                        cout << "DEBUG Tesseract - Detectado: '" << detected.original << "' Confianca: " << conf << " BBox: (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << endl;
                     }
                 }
             } 

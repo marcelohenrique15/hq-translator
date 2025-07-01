@@ -1,8 +1,8 @@
 add_library(detection STATIC text_detector.cpp)
 
 target_include_directories(detection PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}
 )
 
 target_link_libraries(detection PRIVATE
