@@ -90,6 +90,12 @@ git clone https://github.com/marcelohenrique15/hq-translator.git
 cd hq-translator
 ```
 
+Ative o docker para tradução local:
+
+```bash
+sudo docker run -d -p 5001:5000 libretranslate/libretranslate
+```
+
 Então execute:
 
 ```bash

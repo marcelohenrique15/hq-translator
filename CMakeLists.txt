@@ -34,6 +34,8 @@ add_subdirectory(src/capture)
 add_subdirectory(src/detection)
 add_subdirectory(src/overlayer)
 add_subdirectory(src/translation)
+add_subdirectory(src/threads)
+
 
 # Executável principal
 add_executable(main main.cpp)
@@ -49,10 +51,10 @@ target_link_libraries(main
   detection
   overlayer
   translation
+  threads
   ${OpenCV_LIBS}
   nlohmann_json::nlohmann_json
   cpr::cpr
   ${TESSERACT_LIBRARIES}
   -llept
-  -larchive
 )

@@ -20,6 +20,7 @@ public:
     {
         std::string text;
         cv::Rect box;
+        std::string translated;
     };
 
     std::vector<TextDetection> detect_text_box(const cv::Mat& frame);

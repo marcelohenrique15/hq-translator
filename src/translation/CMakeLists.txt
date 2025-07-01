@@ -1,6 +1,6 @@
 # src/translation/CMakeLists.txt
 add_library(translation STATIC
-    translate.cpp
+    LibreTranslate.cpp
 )
 
 # Adicione esta linha para que translate.cpp encontre translate.h
