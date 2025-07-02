@@ -13,12 +13,12 @@ using namespace std::chrono;
 
 DetectionThread::DetectionThread(
     Detector& tesseract,
-    std::queue<cv::Mat>& inputQueue,
-    std::queue<std::vector<textData>>& outputQueue,
-    std::mutex& inputMtx,
-    std::mutex& outputMtx,
-    std::condition_variable& inputCond,
-    std::condition_variable& outputCond
+    queue<cv::Mat>& inputQueue,
+    queue<std::vector<textData>>& outputQueue,
+    mutex& inputMtx,
+    mutex& outputMtx,
+    condition_variable& inputCond,
+    condition_variable& outputCond
 ) :
     ai(tesseract),
     toDetectQueue(inputQueue),
@@ -66,7 +66,7 @@ void DetectionThread::run()
         toDetect = toDetectQueue.front();
         toDetectQueue.pop();
 
-        std::vector<textData> detectedText = ai.detect_text_box(toDetect);
+        vector<textData> detectedText = ai.detect_text_box(toDetect);
 
         {
             lock_guard<mutex> lock(detectedMutex);

@@ -2,13 +2,12 @@
 
 using namespace std;
 using namespace std::chrono;
-using namespace cv;
 
 // ======= CONSTRUCTOR =======
 
 WebcamThread::WebcamThread(
     WebcamCapture& capture, 
-    queue<Mat>& outputQueue, 
+    queue<cv::Mat>& outputQueue, 
     mutex& mtx, 
     condition_variable& cond
 ): 
@@ -41,7 +40,7 @@ void WebcamThread::join()
 
 void WebcamThread::run() {
     while (running) {
-        Mat frame;
+        cv::Mat frame;
         if (!cam.readFrame(frame)) continue;
 
         {

@@ -10,17 +10,16 @@
 #include <nlohmann/json.hpp>
 
 using namespace std;
-using namespace std::chrono;
 
 // ======= CONSTRUCTOR =======
 
 TranslateThread::TranslateThread(
     LibreTranslateAPI& api,
-    std::queue<std::vector<textData>>& inputQueue,
-    std::vector<textData>& outputQueue,
-    std::mutex& inputMtx,
-    std::mutex& outputMtx,
-    std::condition_variable& cond
+    queue<std::vector<textData>>& inputQueue,
+    vector<textData>& outputQueue,
+    mutex& inputMtx,
+    mutex& outputMtx,
+    condition_variable& cond
 ) :
     ai(api),
     toTranslateQueue(inputQueue),
