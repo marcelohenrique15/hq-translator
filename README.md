@@ -14,7 +14,7 @@ Escreva Aqui.
 
 ## Requisitos
 
-É necessário executar o programa no sistema operacional Ubuntu 22.04, além disso, será necessário instalar as bibliotecas abaixo e ter uma Webcam.
+É necessário executar o programa no sistema operacional Ubuntu 22.04, além disso, será necessário instalar as bibliotecas abaixo, ter uma Webcam e possuir o Docker instalado.
 
 ### OpenCV
 
@@ -108,30 +108,41 @@ Então execute:
 
 ```
 .
-├── CMakeLists.txt                    # Arquivo que configura o Build da raiz do projeto
-├── include                           # Pasta com todas as assinaturas das classes
+├── CMakeLists.txt                  # Configuração da Build do projeto.
+├── include                         # Diretório de todas as declarações das classes utilizadas.
 │   ├── capture
-│   │   └── webcam_capture.h           
+│   │   └── webcam_capture.h
 │   ├── detection
-│   │   └── text_detector.h            
+│   │   └── text_detector.h
 │   ├── overlayer
 │   │   └── overlay_renderer.h
+│   ├── threads
+│   │   ├── detection_thread.h
+│   │   ├── translate_thread.h
+│   │   └── webcam_thread.h
 │   └── translation
-│       └── translate.h
-├── main.cpp                          # Lógica principal do programa
-├── README.md                         # Documentação do projeto                 
-├── run.sh                            # Script para buildar e executar o programa
-└── src                               # Pasta com todas classes do projeto
-    ├── capture
-    │   ├── CMakeLists.txt            # Arquivo que configura a build de webcam_capture.cpp
-    │   └── webcam_capture.cpp        # Responsável pela configuração da Webcam
-    ├── detection
-    │   ├── CMakeLists.txt            # Arquivo que configura a build de text_detector.cpp
-    │   └── text_detector.cpp         # Responsável pela configuração do Tesseract e sua detecção de texto
-    ├── overlayer
-    │   ├── CMakeLists.txt            # Arquivo que configura a build de overlay_renderer.cpp
-    │   └── overlay_renderer.cpp      # Responsável por renderizar a tradução do texto na Webcam
-    └── translation
-        ├── CMakeLists.txt            # Arquivo que configura a build de translate.cpp
-        └── translate.cpp             # Responsável por traduzir o texto detectado pelo Tesseract
+│       └── LibreTranslate.h
+├── main.cpp                        # Arquivo principal do projeto.
+├── README.md                       # Documentação do projeto (este arquivo).
+├── run.sh                          # Script de execução do projeto.
+├── src                             # Diretório da lógica de todas as classes.
+│   ├── capture                  
+│   │   ├── CMakeLists.txt          # Configuração da Build para webcam_capture.cpp
+│   │   └── webcam_capture.cpp      # Captura de frames pela Webcam.
+│   ├── detection
+│   │   ├── CMakeLists.txt          # Configuração da Build para text_detector.cpp
+│   │   └── text_detector.cpp       # Detecção do texto no frame gerado pela Webcam.
+│   ├── overlayer
+│   │   ├── CMakeLists.txt          # Configuração da Build para overlay_renderer.cpp
+│   │   └── overlay_renderer.cpp    # Renderiza o texto traduzido na Webcam, por cima do texto original.
+│   ├── threads
+│   │   ├── CMakeLists.txt          # Configuração da Build para todas as Threads.
+│   │   ├── detection_thread.cpp    # Consumidor de webcam_thread e produtor de translate_thread.
+│   │   ├── translate_thread.cpp    # Consumidor de detection_thread.
+│   │   └── webcam_thread.cpp       # Produtor de detection_thread.
+│   └── translation
+│       ├── CMakeLists.txt          # Configuração da Build de LibreTranslate.cpp
+│       └── LibreTranslate.cpp      # Traduz os textos detectados pelo OCR.
+└── struct
+    └── struct_data.h               # Estrutura dos dados que passarão pelas threads.
 ```
