@@ -27,7 +27,7 @@ int main() {
     WebcamCapture webcam;
     Overlay overlayer;
     Detector tesseract;
-    LibreTranslateAPI ai;
+    LibreTranslateAPI ai("http://localhost:5001/");
 
     if (!webcam.isOpened()) {
         cerr << "Camera nao foi iniciada corretamente.\n";
