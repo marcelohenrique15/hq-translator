@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Pacotes necessários
 find_package(OpenCV REQUIRED)
-find_package(nlohmann_json REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
 find_package(PkgConfig REQUIRED)
 
 # Tesseract e Leptonica
@@ -41,6 +41,7 @@ target_include_directories(main PRIVATE
     ${CMAKE_SOURCE_DIR}/include
     ${TESSERACT_INCLUDE_DIRS}
     ${LEPTONICA_INCLUDE_DIRS}
+    ${OpenCV_INCLUDE_DIRS}
 )
 
 # Link com bibliotecas
@@ -51,9 +52,16 @@ target_link_libraries(main
   overlayer
   translation
   struct_utils
-  ${OpenCV_LIBS}
   nlohmann_json::nlohmann_json
   cpr::cpr
+  ${OpenCV_LIBS}
+  # A ordem é crucial. As bibliotecas que _usam_ outras vêm antes.
   ${TESSERACT_LIBRARIES}
   ${LEPTONICA_LIBRARIES}
+  -ljpeg
+  -lpng
+  -ltiff
+  -lz
+  -lopenjp2
+  -lgif # <-- ADICIONE ESTA LINHA AQUI!
 )

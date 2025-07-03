@@ -38,6 +38,8 @@ cv::Mat Detector::preprocess_image(const cv::Mat& frame)
     // pode ajudar ou piorar a leitura de dados                     --> Resultado: Letra preta em fundo branco.
     adaptiveThreshold(processed_frame, processed_frame, 255, cv::ADAPTIVE_THRESH_GAUSSIAN_C, cv::THRESH_BINARY, 21, 5);
 
+    imshow("tesseract", processed_frame);
+
     return processed_frame;
 }
 
