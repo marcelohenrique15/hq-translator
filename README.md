@@ -76,22 +76,30 @@ Deverá ter como resposta a versão do OpenCV que foi instalada.
 ### Leptonica e Tesseract
 O Tesseract é a API responsável pela IA que irá detectar textos mostrados nas imagens, e no caso deste projeto, detectará através da Webcam.
 
-Para instalar o Leptonica (dependência do Tesseract), utilize o seguinte comando:
-
-```bash
-sudo apt install libleptonica-dev
-```
-
-Agora, instale bibliotecas que servirão para ler diferentes tipos de imagem:
+Primeiramente, instale bibliotecas que servirão para ler diferentes tipos de imagem:
 
 ```bash
 sudo apt-get install libpng-dev libjpeg-dev libtiff-dev libgif-dev libwebp-dev libopenjp2-7-dev zlib1g-dev
 ```
 
+Para instalar o Leptonica (dependência do Tesseract), utilize o seguinte comando:
+
+```bash
+cd ~
+wget https://github.com/DanBloomberg/leptonica/releases/download/1.83.1/leptonica-1.83.1.tar.gz
+tar -xzvf leptonica-1.83.1.tar.gz
+cd leptonica-1.83.1
+mkdir build
+cd build
+cmake ..
+make -j`nproc`
+sudo make install
+```
+
 Para instalar o Tesseract, utilize o seguinte comando:
 
 ```bash
-cd ~/Desktop
+cd ~
 wget https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.3.0.tar.gz
 tar -xzvf 5.3.0.tar.gz 
 cd tesseract-5.3.0/
