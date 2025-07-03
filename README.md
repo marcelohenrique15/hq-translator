@@ -1,5 +1,6 @@
 ### Índice
 1. [Visão Geral](#visão-geral)
+2. [Ferramentas](#ferramentas)
 2. [Requisitos](#requisitos)
 3. [Execução](#execução)
 4. [Estrutura do Projeto](#estrutura-do-projeto)
@@ -8,9 +9,47 @@
 
 ## Visão Geral
 
-Escreva Aqui.
+Este projeto, HQ Translator, é uma aplicação de tradução de texto em tempo real desenvolvida em C++. Ele foi projetado para capturar frames de uma webcam, detectar textos nos frames, traduzi-los instantaneamente e, em seguida, sobrepor as traduções de volta no feed de vídeo original. A solução adota uma arquitetura robusta e multi-threaded para garantir alto desempenho.
 
----
+### Como Funciona a Arquitetura Multi-threaded: Paralelismo em pipeline.
+
+O Hq Translator opera através de um eficiente pipeline de processamento assíncrono, onde cada etapa é executada em uma thread dedicada, garantindo que operações complexas não congelem a aplicação:
+
+Captura de Vídeo, uma thread dedicada gerencia a webcam, capturando frames continuamente e os disponibilizando para as próximas etapas.
+
+Detecção de Texto (OCR), outra thread consome esses frames, utilizando a poderosa biblioteca Tesseract OCR para identificar e extrair textos presentes na imagem. Para otimizar o desempenho, esta etapa é executada em intervalos controlados.
+
+Tradução Inteligente, uma terceira thread recebe os textos detectados. Ela se integra com a API LibreTranslate para realizar as traduções. Um mecanismo de cache é implementado para armazenar traduções frequentes, minimizando chamadas repetidas à API e melhorando a performance.
+
+Exibição e Sobreposição, a thread principal da aplicação exibe o feed de vídeo da webcam. As traduções obtidas são desenhadas dinamicamente sobre o vídeo, permitindo que o usuário veja a tradução em tempo real.
+
+## Ferramentas 
+
+Este projeto foi construído utilizando as seguintes tecnologias e bibliotecas principais:
+
+_C++_, a linguagem de programação principal para todo o desenvolvimento do sistema.
+
+_OpenCV_, biblioteca de visão computacional essencial para a captura de vídeo da webcam, manipulação de frames e pré-processamento de imagens.
+
+_Tesseract_, motor de Reconhecimento Óptico de Caracteres, utilizado para a detecção e extração de texto de imagens e frames de vídeo.
+
+_Nlohmann_, biblioteca C++ para parseamento e serialização de dados no formato JSON, fundamental para a comunicação com a API do LibreTranslate.
+
+_LibreTranslate_, uma API de tradução de código aberto, empregada para realizar as traduções dos textos detectados.
+
+### Ferramentas de Desenvolvimento e Comunicação
+
+Além das ferramentas citadas anteriormente, temos as ferramentas de desenvolvimento e comunicação:
+
+_VS Code_, ambiente de Desenvolvimento Integrado (IDE) leve e poderoso, utilizado para a escrita, depuração e gerenciamento do código-fonte.
+
+_Git_, istema de controle de versão distribuído, essencial para o rastreamento de alterações no código.
+
+_GitHub_, plataforma de hospedagem de código-fonte baseada em Git, utilizada para o compartilhamento do repositório, colaboração em equipe, controle de versões e gerenciamento de projetos.
+
+_WhatsApp_ utilizado para comunicação rápida e direta entre os membros da equipe.
+
+_Discord_, plataforma de comunicação que oferece recursos como chat de texto, voz e vídeo, canais temáticos e compartilhamento de arquivos, ideal para discussões mais aprofundadas e reuniões de equipe.
 
 ## Requisitos
 
