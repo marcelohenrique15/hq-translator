@@ -22,35 +22,34 @@ Detecção de Texto (OCR), outra thread consome esses frames, utilizando a poder
 Tradução Inteligente, uma terceira thread recebe os textos detectados. Ela se integra com a API LibreTranslate para realizar as traduções. Um mecanismo de cache é implementado para armazenar traduções frequentes, minimizando chamadas repetidas à API e melhorando a performance.
 
 Exibição e Sobreposição, a thread principal da aplicação exibe o feed de vídeo da webcam. As traduções obtidas são desenhadas dinamicamente sobre o vídeo, permitindo que o usuário veja a tradução em tempo real.
----
 
 ## Ferramentas 
 
 Este projeto foi construído utilizando as seguintes tecnologias e bibliotecas principais:
 
-*C++*, a linguagem de programação principal para todo o desenvolvimento do sistema.
+_C++_, a linguagem de programação principal para todo o desenvolvimento do sistema.
 
-*OpenCV*, biblioteca de visão computacional essencial para a captura de vídeo da webcam, manipulação de frames e pré-processamento de imagens.
+_OpenCV_, biblioteca de visão computacional essencial para a captura de vídeo da webcam, manipulação de frames e pré-processamento de imagens.
 
-*Tesseract*, motor de Reconhecimento Óptico de Caracteres, utilizado para a detecção e extração de texto de imagens e frames de vídeo.
+_Tesseract_, motor de Reconhecimento Óptico de Caracteres, utilizado para a detecção e extração de texto de imagens e frames de vídeo.
 
-*Nlohmann* biblioteca C++ para parseamento e serialização de dados no formato JSON, fundamental para a comunicação com a API do LibreTranslate.
+_Nlohmann_, biblioteca C++ para parseamento e serialização de dados no formato JSON, fundamental para a comunicação com a API do LibreTranslate.
 
-*LibreTranslate*, uma API de tradução de código aberto, empregada para realizar as traduções dos textos detectados.
+_LibreTranslate_, uma API de tradução de código aberto, empregada para realizar as traduções dos textos detectados.
 
 ### Ferramentas de Desenvolvimento e Comunicação
 
 Além das ferramentas citadas anteriormente, temos as ferramentas de desenvolvimento e comunicação:
 
-*VS Code*, ambiente de Desenvolvimento Integrado (IDE) leve e poderoso, utilizado para a escrita, depuração e gerenciamento do código-fonte.
+_VS Code_, ambiente de Desenvolvimento Integrado (IDE) leve e poderoso, utilizado para a escrita, depuração e gerenciamento do código-fonte.
 
-*Git*, istema de controle de versão distribuído, essencial para o rastreamento de alterações no código.
+_Git_, istema de controle de versão distribuído, essencial para o rastreamento de alterações no código.
 
-*GitHub*, plataforma de hospedagem de código-fonte baseada em Git, utilizada para o compartilhamento do repositório, colaboração em equipe, controle de versões e gerenciamento de projetos.
+_GitHub_, plataforma de hospedagem de código-fonte baseada em Git, utilizada para o compartilhamento do repositório, colaboração em equipe, controle de versões e gerenciamento de projetos.
 
-*WhatsApp*, utilizado para comunicação rápida e direta entre os membros da equipe.
+_WhatsApp_ utilizado para comunicação rápida e direta entre os membros da equipe.
 
-*Discord*, plataforma de comunicação que oferece recursos como chat de texto, voz e vídeo, canais temáticos e compartilhamento de arquivos, ideal para discussões mais aprofundadas e reuniões de equipe.
+_Discord_, plataforma de comunicação que oferece recursos como chat de texto, voz e vídeo, canais temáticos e compartilhamento de arquivos, ideal para discussões mais aprofundadas e reuniões de equipe.
 
 ## Requisitos
 
