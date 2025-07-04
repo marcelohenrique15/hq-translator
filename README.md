@@ -1,9 +1,9 @@
 ### Índice
 1. [Visão Geral](#visão-geral)
 2. [Ferramentas](#ferramentas)
-2. [Requisitos](#requisitos)
-3. [Execução](#execução)
-4. [Estrutura do Projeto](#estrutura-do-projeto)
+3. [Requisitos](#requisitos)
+4. [Execução](#execução)
+5. [Estrutura do Projeto](#estrutura-do-projeto)
 
 ---
 
@@ -51,99 +51,79 @@ _WhatsApp_ utilizado para comunicação rápida e direta entre os membros da equ
 
 _Discord_, plataforma de comunicação que oferece recursos como chat de texto, voz e vídeo, canais temáticos e compartilhamento de arquivos, ideal para discussões mais aprofundadas e reuniões de equipe.
 
+---
+
 ## Requisitos
 
-É necessário executar o programa no sistema operacional Ubuntu 22.04, além disso, será necessário instalar as bibliotecas abaixo, ter uma Webcam e possuir o Docker instalado.
+É necessário ter uma Webcam e o Docker instalado.
 
-### OpenCV
+Caso não tenha o Docker instalado, siga o passo a passo para instalação no Linux ou via WSL:
 
-Essa biblioteca é responsável por implementar as ferramentas de visão computacional que serão utilizadas.
-
-Utilize os seguintes comandos:
+1. Instale as dependências do Docker:
 
 ```bash
 sudo apt-get update
-sudo apt install libopencv-dev
+sudo apt-get install ca-certificates curl apt-transport-https software-properties-common
 ```
 
-Confirme a instalação com o comando:
+2. Adicione a chave GPG:
 
 ```bash
-dpkg -l libopencv-dev
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 ```
-Deverá ter como resposta a versão do OpenCV que foi instalada.
 
-### Leptonica e Tesseract
-O Tesseract é a API responsável pela IA que irá detectar textos mostrados nas imagens, e no caso deste projeto, detectará através da Webcam.
-
-Primeiramente, instale bibliotecas que servirão para ler diferentes tipos de imagem:
+3. Adicione o repositório Docker ao apt sources:
 
 ```bash
-sudo apt-get install libpng-dev libjpeg-dev libtiff-dev libgif-dev libwebp-dev libopenjp2-7-dev zlib1g-dev
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-Para instalar o Leptonica (dependência do Tesseract), utilize o seguinte comando:
+4. Instale o Docker:
 
 ```bash
-cd ~
-wget https://github.com/DanBloomberg/leptonica/releases/download/1.83.1/leptonica-1.83.1.tar.gz
-tar -xzvf leptonica-1.83.1.tar.gz
-cd leptonica-1.83.1
-mkdir build
-cd build
-cmake ..
-make -j`nproc`
-sudo make install
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-Para instalar o Tesseract, utilize o seguinte comando:
-
+5. Adicione seu usuário ao grupo docker para evitar o uso de "sudo" (IMPORTANTE PARA EXECUÇÃO):
 ```bash
-cd ~
-wget https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.3.0.tar.gz
-tar -xzvf 5.3.0.tar.gz 
-cd tesseract-5.3.0/
-mkdir build
-cd build
-cmake ..
-make -j `nproc`
-sudo make install
+sudo usermod -aG docker ${USER}
 ```
-
-Agora instale o modelo treinado para detectar textos em inglês:
-
-```bash
-wget https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/main/eng.traineddata
-sudo mv *.traineddata /usr/local/share/tessdata
-```
-
-### Nlohmann
-Essa biblioteca é responsável por permitir que o programa trabalhe utilizando Json, assim será possível fazer requisições para tradução do texto detectado pelo Tesseract.
-
-Para instalar a biblioteca Nlohmann, utilize:
-
-```bash
-sudo apt-get -y install nlohmann-json3-dev
-```
-
----
+Necessária reinicialização do computador após o passo 5.
 
 ## Execução
 
-Após instalar todas as dependências, clone este repositório:
+Clone o projeto:
 
 ```bash
 git clone https://github.com/marcelohenrique15/hq-translator.git
 cd hq-translator
 ```
 
-Ative o docker para tradução local:
+Dê a permissão necessária para que o Docker acesse sua câmera:
 
 ```bash
-sudo docker run -d -p 5001:5000 libretranslate/libretranslate
+xhost +local:docker
 ```
 
-Então execute:
+Dê permissão para os scripts do projeto:
+
+```bash
+chmod +x start_docker.sh stop_docker.sh delete_docker.sh run.sh
+```
+
+Ative o Docker (pode levar alguns minutos):
+
+```bash
+./start_docker.sh
+```
+
+E após entrar no terminal bash do Docker, execute:
 
 ```bash
 ./run.sh
