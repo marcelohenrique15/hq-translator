@@ -1,0 +1,38 @@
+services:
+  libretranslate_api:
+    image: libretranslate/libretranslate
+    container_name: libretranslate_api_container
+    ports:
+      - "5001:5000" # mapeando porta 5000 interna pra 5001 externa
+    environment:
+      - LT_DEBUG=true
+      - LT_LANGUAGES=en,pt,es
+    command: ["--host", "0.0.0.0", "--debug", "--load-only", "en,pt,es"]
+    restart: unless-stopped
+    networks:
+      - translator_network
+
+  hq_translator_app:
+    build: .
+    container_name: hq_translator_app_container
+    depends_on:
+      - libretranslate_api
+    environment:
+      DISPLAY: ${DISPLAY:-:0}
+      QT_XKB_CONFIG_ROOT: /usr/share/X11/xkb
+      QT_X11_NO_MITSHM: 1
+      LIBRETRANSLATE_URL: "http://libretranslate_api:5000" # dentro da rede Docker o host é o nome do serviço
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    devices:
+      - /dev/video0:/dev/video0
+    privileged: true
+    networks:
+      - translator_network
+    command: ["bash"]
+    stdin_open: true
+    tty: true
+
+networks:
+  translator_network:
+    driver: bridge
