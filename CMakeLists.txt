@@ -56,12 +56,14 @@ target_link_libraries(main
   cpr::cpr
   ${OpenCV_LIBS}
   # A ordem é crucial. As bibliotecas que _usam_ outras vêm antes.
-  ${TESSERACT_LIBRARIES}
-  ${LEPTONICA_LIBRARIES}
+  ${TESSERACT_LIBRARIES} # Tesseract depende de Leptonica e LibArchive
+  ${LEPTONICA_LIBRARIES} # Leptonica depende de outras libs como WebP
+  -larchive # <-- ADICIONE ESTA LINHA AQUI! (Para resolver os símbolos do Tesseract)
   -ljpeg
   -lpng
   -ltiff
   -lz
   -lopenjp2
-  -lgif # <-- ADICIONE ESTA LINHA AQUI!
+  -lgif
+  -lwebp
 )
