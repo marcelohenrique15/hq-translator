@@ -105,12 +105,6 @@ git clone https://github.com/marcelohenrique15/hq-translator.git
 cd hq-translator
 ```
 
-Dê a permissão necessária para que o Docker acesse sua câmera:
-
-```bash
-xhost +local:docker
-```
-
 Dê permissão para os scripts do projeto:
 
 ```bash

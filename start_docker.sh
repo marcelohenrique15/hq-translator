@@ -13,6 +13,7 @@ echo "--- Iniciando o projeto HQ-Translator ---"
 # Usamos 'docker images -q' para listar apenas os IDs das imagens
 # e filtramos pelo nome do serviço para encontrar a imagem construída pelo Compose.
 export DISPLAY=${DISPLAY:-:0}
+xhost +local:docker
 if [[ -z "$(docker images -q "$(basename "$PWD")_${APP_SERVICE_NAME}")" ]]; then
   echo "Imagem do '$APP_SERVICE_NAME' não encontrada. Construindo e iniciando serviços (pode levar um tempo na primeira vez)..."
   docker compose up --build -d # Usa --build para construir a imagem e -d para rodar em segundo plano
