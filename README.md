@@ -4,6 +4,7 @@
 3. [Requisitos](#requisitos)
 4. [Execução](#execução)
 5. [Estrutura do Projeto](#estrutura-do-projeto)
+6. [Imagens em execução](#imagens-em-execução)
 
 ---
 
@@ -167,3 +168,8 @@ E após entrar no terminal bash do Docker, execute:
 └── struct
     └── struct_data.h               # Estrutura dos dados que passarão pelas threads.
 ```
+
+---
+
+## Imagens em execução
+![image](https://github.com/user-attachments/assets/8e4591b0-528b-4480-bb35-b6f90bb3cb48)
