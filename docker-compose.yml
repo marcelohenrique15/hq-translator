@@ -1,38 +1,42 @@
+# Define os serviços que compõem sua aplicação Docker.
 services:
+  # Serviço da API LibreTranslate.
   libretranslate_api:
-    image: libretranslate/libretranslate
-    container_name: libretranslate_api_container
+    image: libretranslate/libretranslate # Usa a imagem oficial do LibreTranslate do Docker Hub.
+    container_name: libretranslate_api_container # Define um nome específico para o container.
     ports:
-      - "5001:5000" # mapeando porta 5000 interna pra 5001 externa
+      - "5001:5000" # Mapeia a porta 5000 interna do container para a porta 5001 no host.
     environment:
-      - LT_DEBUG=true
-      - LT_LANGUAGES=en,pt,es
-    command: ["--host", "0.0.0.0", "--debug", "--load-only", "en,pt,es"]
-    restart: unless-stopped
+      - LT_DEBUG=true # Ativa o modo de depuração para o LibreTranslate.
+      - LT_LANGUAGES=en,pt,es # Define os idiomas que serão carregados na inicialização (inglês, português, espanhol).
+    command: ["--host", "0.0.0.0", "--debug", "--load-only", "en,pt,es"] # Comando de inicialização do LibreTranslate dentro do container.
+    restart: unless-stopped # Reinicia o container automaticamente, a menos que seja explicitamente parado.
     networks:
-      - translator_network
+      - translator_network # Conecta este serviço à rede Docker personalizada.
 
+  # Serviço da aplicação principal HQ-Translator.
   hq_translator_app:
-    build: .
-    container_name: hq_translator_app_container
+    build: . # Constrói a imagem Docker a partir do Dockerfile no diretório atual.
+    container_name: hq_translator_app_container # Define um nome específico para o container.
     depends_on:
-      - libretranslate_api
+      - libretranslate_api # Garante que 'libretranslate_api' seja iniciado antes de 'hq_translator_app'.
     environment:
-      DISPLAY: ${DISPLAY:-:0}
-      QT_XKB_CONFIG_ROOT: /usr/share/X11/xkb
-      QT_X11_NO_MITSHM: 1
-      LIBRETRANSLATE_URL: "http://libretranslate_api:5000" # dentro da rede Docker o host é o nome do serviço
+      DISPLAY: ${DISPLAY:-:0} # Passa a variável DISPLAY do host para o container para permitir exibição gráfica.
+      QT_XKB_CONFIG_ROOT: /usr/share/X11/xkb # Configuração para teclado XKB no ambiente Qt.
+      QT_X11_NO_MITSHM: 1 # Desativa a extensão MIT-SHM do X11 (pode ajudar com problemas de exibição em alguns setups).
+      LIBRETRANSLATE_URL: "http://libretranslate_api:5000" # URL da API LibreTranslate acessível DENTRO da rede Docker.
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw # Monta o socket X11 para comunicação gráfica.
     devices:
-      - /dev/video0:/dev/video0
-    privileged: true
+      - /dev/video0:/dev/video0 # Mapeia o dispositivo da webcam do host para o container.
+    privileged: true # Concede privilégios elevados ao container (necessário para acesso direto a hardware como webcam).
     networks:
-      - translator_network
-    command: ["bash"]
-    stdin_open: true
-    tty: true
+      - translator_network # Conecta este serviço à rede Docker personalizada.
+    command: ["bash"] # O comando inicial do container é um shell bash.
+    stdin_open: true # Mantém o STDIN aberto (permite interação).
+    tty: true # Aloca um TTY (terminal interativo).
 
+# Define as redes Docker usadas pelos serviços.
 networks:
   translator_network:
-    driver: bridge
+    driver: bridge # Usa o driver de rede 'bridge' padrão do Docker.
