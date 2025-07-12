@@ -1,2 +1,0 @@
-docker builder prune -a # Remove todos os dados de construção do Docker não utilizados, incluindo caches de imagens.
-                        # -a: Remove todos os dados de construção, não apenas os 'dangling' (pendentes/não referenciados).
