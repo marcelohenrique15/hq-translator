@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,56 +14,72 @@
             margin: 0;
             padding: 0;
         }
+
         .container {
             max-width: 900px;
             margin: 40px auto;
             padding: 20px;
         }
-        h1, h2, h3 {
+
+        h1,
+        h2,
+        h3 {
             color: #ffffff;
             border-bottom: 2px solid #333;
             padding-bottom: 10px;
             margin-top: 40px;
         }
+
         h1 {
             font-size: 3em;
             text-align: center;
             border-bottom: none;
         }
+
         h2 {
             font-size: 2em;
         }
+
         a {
             color: #76c6ff;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
 
         /* --- Estilos do Cabeçalho Superior --- */
+
         .top-header {
             background-color: #1a1a1a;
             text-align: center;
             padding: 50px 20px;
         }
+
         .top-header .authors {
             margin-top: 15px;
         }
+
         .top-header .authors a {
-            color: #28a745; /* Verde */
+            color: #28a745;
+            /* Verde */
             margin: 0 10px;
             font-size: 1.1em;
         }
+
         .top-header .highlight {
-            color: #dc3545; /* Vermelho */
+            color: #dc3545;
+            /* Vermelho */
             font-size: 1.3em;
             font-weight: bold;
             margin-top: 30px;
         }
+
         .top-header .buttons {
             margin-top: 25px;
         }
+
         .top-header .button {
             background-color: #333;
             color: #f0f0f0;
@@ -73,11 +90,12 @@
             font-size: 1em;
             transition: background-color 0.3s;
         }
+
         .top-header .button:hover {
             background-color: #555;
             text-decoration: none;
         }
-        
+
         hr {
             border: 0;
             height: 1px;
@@ -89,8 +107,9 @@
             list-style-type: disc;
             padding-left: 20px;
         }
-        
+
         /* --- Estilo para a imagem de demonstração --- */
+
         .demo-image {
             width: 100%;
             max-width: 100%;
@@ -100,6 +119,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header class="top-header">
@@ -113,64 +133,100 @@
         </div>
         <p class="highlight">Projeto de Estruturas de Dados Orientadas a Objetos (2025)</p>
         <div class="buttons">
-            <a href="#resumo" class="button">📄 Overview</a>
-            <a href="https://github.com/marcelohenrique15/hq-translator" target="_blank" class="button">💻 Repositório</a>
+            <a href="https://docs.google.com/document/d/1EI6KZuEoOQZnj_vHoB7GE4TzN3ErMHz1CjzgV9-zOA8/edit?usp=sharing"
+                class="button">📄 Relatório</a>
+            <a href="https://github.com/marcelohenrique15/hq-translator" target="_blank" class="button">💻
+                Repositório</a>
         </div>
     </header>
 
     <div class="container">
 
         <section id="resumo">
-            <h2>Overview</h2>
+            <h2>Visão Geral</h2>
             <p>
-                O <strong>HQ-Translator</strong> é uma aplicação de tradução de texto em tempo real desenvolvida em C++ com uma arquitetura orientada a objetos. O sistema é estruturado em classes especializadas que encapsulam as funcionalidades principais: captura de vídeo, detecção de texto, tradução e renderização. A classe de captura utiliza a webcam para adquirir os frames, enquanto outra, baseada no Tesseract OCR, extrai os textos presentes nas imagens. A tradução é gerenciada por uma classe dedicada que se comunica com a API LibreTranslate para converter o conteúdo detectado. Por fim, uma classe de renderização exibe o resultado traduzido sobre o vídeo original.
+                O <strong>HQ-Translator</strong> é uma aplicação de tradução de texto em tempo real desenvolvida em C++
+                com uma arquitetura orientada a objetos. O sistema é estruturado em classes especializadas que
+                encapsulam as funcionalidades principais: captura de vídeo, detecção de texto, tradução e renderização.
+                A classe de captura utiliza a webcam para adquirir os frames, enquanto outra, baseada no Tesseract OCR,
+                extrai os textos presentes nas imagens. A tradução é gerenciada por uma classe dedicada que se comunica
+                com a API LibreTranslate para converter o conteúdo detectado. Por fim, uma classe de renderização exibe
+                o resultado traduzido sobre o vídeo original.
             </p>
             <p>
-                Para garantir fluidez e desempenho, o sistema aplica o conceito de concorrência utilizando uma arquitetura multi-threaded em pipeline: cada etapa do processo (captura, OCR, tradução) é tratada por um objeto em sua própria thread. Isso permite que as tarefas ocorram em paralelo de forma sincronizada, evitando que a interface congele. Essa organização modular e concorrente melhora a performance, a manutenibilidade e a escalabilidade da aplicação.
+                Para garantir fluidez e desempenho, o sistema aplica o conceito de concorrência utilizando uma
+                arquitetura multi-threaded em pipeline: cada etapa do processo (captura, OCR, tradução) é tratada por um
+                objeto em sua própria thread. Isso permite que as tarefas ocorram em paralelo de forma sincronizada,
+                evitando que a interface congele. Essa organização modular e concorrente melhora a performance, a
+                manutenibilidade e a escalabilidade da aplicação.
             </p>
+            <p>Abaixo, um diagrama do fluxo do projeto:</p>
+            <a
+                href="https://kroki.io/seqdiag/svg/eNp1kUFLw0AQhe_9FUtPehDsrSAKYhEEix4CHkTCpPuSLmx3dTNpY8X_7mxI4lrb65v3vbczW-NDG6rU10QpjZIay3npHddmD3WtZpeiQ1fILVzFa5HmUXJeI98Z3SkzcYm2JOPUxY16QbGiTbYOIK1eLRWwYprWTIHPzqdvV-L94xmZO3rnJiCB4vw-0AanwAUYKzbe_euD2xpSZYQjKuyhd8R9SDjdSTmj5bzw7VB8BM4CudoS40R3jFgQU19_aJeER1MEjPrt80OSwaNdYoZXHMnozp5eTNZxUh5IN3ujfd8-_M7TFsHSZ7pwoF3s6CdD1QBksJSu1poCv2f9nvwAgti7kA=="><img
+                    src="image2.png" alt="Diagrama do fluxo de dados do projeto.'" class="demo-image"></a>
         </section>
-
-        <hr>
 
         <section id="demonstracao">
             <h2>Demonstração</h2>
-            <p>Abaixo, uma imagem do HQ-Translator em ação, detectando o texto em uma embalagem e sobrepondo a tradução em tempo real.</p>
-            
-            <img src="image.png" alt="Demonstração do HQ-Translator traduzindo 'Criar mais, Criar diferente' para 'Create More, Create Different'" class="demo-image">
-        </section>
+            <p>Abaixo, uma imagem do HQ-Translator em ação, detectando o texto em uma embalagem e sobrepondo a tradução
+                em tempo real.</p>
 
-        <hr>
+            <img src="image.png"
+                alt="Demonstração do HQ-Translator traduzindo 'Criar mais, Criar diferente' para 'Create More, Create Different'"
+                class="demo-image">
+
+            <p>A imagem acima ilustra o HQ-Translator em funcionamento, demonstrando sua capacidade de detectar e
+                traduzir texto em tempo real a partir de um feed de webcam. A tela está dividida para apresentar duas
+                perspectivas cruciais do pipeline de processamento.</p>
+
+            <p>O lado esquerdo, exibe o feed de vídeo capturado diretamente da webcam. É possível
+                observar uma embalagem com o texto "Criar mais, Criar diferente" em português. Este é o input visual
+                bruto para o sistema.</p>
+
+            <p>Já o lado direito, mostra a imagem após o pré-processamento e a aplicação do
+                Tesseract OCR. Note que o texto "Create More, Create Different" (a tradução do texto em português) já
+                está visível aqui, indicando que o Tesseract detectou o texto original e a etapa de tradução já foi
+                concluída e sobreposta. A imagem aparece em preto e branco, um passo comum no
+                pré-processamento para otimizar a detecção de caracteres.</p>
+        </section>
 
         <section id="tecnologias">
             <h2>Tecnologias Utilizadas</h2>
             <ul>
-                <li><strong>C++:</strong> Linguagem principal, escolhida por seu alto desempenho e controle de sistema.</li>
-                <li><strong>OpenCV:</strong> Essencial para a captura de vídeo, manipulação de frames e pré-processamento de imagem.</li>
-                <li><strong>Tesseract:</strong> Motor de Reconhecimento Óptico de Caracteres (OCR) para extrair texto de imagens.</li>
+                <li><strong>C++:</strong> Linguagem principal, escolhida por seu alto desempenho e controle de sistema.
+                </li>
+                <li><strong>OpenCV:</strong> Essencial para a captura de vídeo, manipulação de frames e
+                    pré-processamento de imagem.</li>
+                <li><strong>Tesseract:</strong> Motor de Reconhecimento Óptico de Caracteres (OCR) para extrair texto de
+                    imagens.</li>
                 <li><strong>LibreTranslate:</strong> API de tradução de código aberto, flexível e auto-hospedável.</li>
-                <li><strong>Docker:</strong> Utilizado para criar um ambiente de execução consistente e isolado, simplificando as dependências.</li>
-                <li><strong>CMake:</strong> Sistema de automação da compilação que gerencia as dependências e a build do projeto.</li>
+                <li><strong>Docker:</strong> Utilizado para criar um ambiente de execução consistente e isolado,
+                    simplificando as dependências.</li>
+                <li><strong>CMake:</strong> Sistema de automação da compilação que gerencia as dependências e a build do
+                    projeto.</li>
             </ul>
         </section>
 
-        <hr>
-
         <section id="equipe">
             <h2>Equipe</h2>
-            <p><strong>Marcelo Henrique:</strong> Idealizador do projeto, teve participação contínua em todas as etapas do backend. Coordenou a integração das funcionalidades e implementou o algoritmo de detecção e tradução de texto. Estruturou o pipeline de dados utilizando filas e Threads paralelas, garantindo o desempenho e a escalabilidade do sistema.</p>
-            <p><strong>Gabriel Nascimento:</strong> Responsável pela interface no frontend, também colaborou em diversas outras partes do projeto, sendo peça-chave em sua execução.</p>
-            <p><strong>Gustavo Ferreira:</strong> Iniciou o desenvolvimento do algoritmo de detecção de texto e foi responsável pela implementação da funcionalidade de realidade aumentada, substituindo o texto original por sua tradução em tempo real. Contribuiu de forma significativa com seu conhecimento técnico em orientação a objetos, sendo peça-chave na construção da arquitetura técnica do sistema.</p>
-            <p><strong>Elinaldo Emanoel:</strong> Atuou no desenvolvimento do frontend com Gabriel e esteve presente em praticamente todas as etapas do projeto, contribuindo com a documentação, testes e demais tarefas, mostrando grande envolvimento e proatividade.</p>
-            <p><strong>Matheus Stepple:</strong> Contribuiu para o aprimoramento do pré-processamento de imagens e dos filtros utilizados na detecção de texto. Também aplicou conceitos de orientação a objetos no código, colaborando ativamente para a organização e modularização da solução.</p>
+            <p><strong>Marcelo Henrique:</strong> Idealizador e líder do projeto, teve participação estratégica e
+                contínua em todas as etapas do desenvolvimento Backend. Coordenou a integração das funcionalidades e foi
+                peça central na implementação do algoritmo de detecção e tradução de texto. Estruturou o pipeline de
+                dados utilizando filas e Threads paralelas, garantindo o desempenho e a escalabilidade do sistema.</p>
+            <p><strong>Gabriel Nascimento:</strong> Responsável pela interface no frontend, também colaborou em diversas
+                outras partes do projeto, sendo peça-chave em sua execução.</p>
+            <p><strong>Gustavo Ferreira:</strong> IIniciou o desenvolvimento do algoritmo de detecção de texto e foi
+                responsável pela implementação da funcionalidade de realidade aumentada, substituindo o texto original
+                por sua tradução em tempo real. Contribuiu de forma significativa com seu conhecimento técnico em
+                orientação a objetos, sendo peça-chave na construção da arquitetura técnica do sistema.</p>
+            <p><strong>Elinaldo Emanoel:</strong> Atuou no desenvolvimento do frontend com Gabriel e esteve presente em
+                praticamente todas as etapas do projeto, contribuindo com a documentação, testes e demais tarefas,
+                mostrando grande envolvimento e proatividade.</p>
+            <p><strong>Matheus Stepple:</strong> Contribuiu para o aprimoramento do pré-processamento de imagens e dos
+                filtros utilizados na detecção de texto. Também aplicou conceitos de orientação a objetos no código,
+                colaborando ativamente para a organização e modularização da solução.</p>
         </section>
-
-        <section id="fluxo">
-            <h2>Fluxo do Projeto</h2>
-            <p>Abaixo, um diagrama do fluxo do projeto.</p>
-            <img src="image2.png" alt="Diagrama do fluxo de dados do projeto.'" class="demo-image">
-        </section>
-
     </div>
-
 </body>
+
 </html>
