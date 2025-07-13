@@ -24,7 +24,7 @@ Tradução Inteligente, uma terceira thread recebe os textos detectados. Ela se 
 
 Exibição e Sobreposição, a thread principal da aplicação exibe o feed de vídeo da webcam. As traduções obtidas são desenhadas dinamicamente sobre o vídeo, permitindo que o usuário veja a tradução em tempo real.
 
-## Ferramentas 
+## Ferramentas de Desenvolvimento
 
 Este projeto foi construído utilizando as seguintes tecnologias e bibliotecas principais:
 
@@ -38,11 +38,13 @@ _Nlohmann_, biblioteca C++ para parseamento e serialização de dados no formato
 
 _LibreTranslate_, uma API de tradução de código aberto, empregada para realizar as traduções dos textos detectados.
 
-### Ferramentas de Desenvolvimento e Comunicação
+_Docker_, utilizado para criar um ambiente de execução consistente e isolado, simplificando as dependências.
+
+### Ferramentas de Comunicação
 
 Além das ferramentas citadas anteriormente, temos as ferramentas de desenvolvimento e comunicação:
 
-_VS Code_, ambiente de Desenvolvimento Integrado (IDE) leve e poderoso, utilizado para a escrita, depuração e gerenciamento do código-fonte.
+_Visual Studio Code_, ambiente de Desenvolvimento Integrado (IDE) leve e poderoso, utilizado para a escrita, depuração e gerenciamento do código-fonte.
 
 _Git_, istema de controle de versão distribuído, essencial para o rastreamento de alterações no código.
 
