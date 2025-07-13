@@ -142,7 +142,7 @@
 
     <div class="container">
 
-        <section id="resumo">
+        <section>
             <h2>Visão Geral</h2>
             <p>
                 O <strong>HQ-Translator</strong> é uma aplicação de tradução de texto em tempo real desenvolvida em C++
@@ -164,6 +164,40 @@
             <a href="https://kroki.io/seqdiag/svg/eNp1kUFLw0AQhe_9FUtPehDsrSAKYhEEix4CHkTCpPuSLmx3dTNpY8X_7mxI4lrb65v3vbczW-NDG6rU10QpjZIay3npHddmD3WtZpeiQ1fILVzFa5HmUXJeI98Z3SkzcYm2JOPUxY16QbGiTbYOIK1eLRWwYprWTIHPzqdvV-L94xmZO3rnJiCB4vw-0AanwAUYKzbe_euD2xpSZYQjKuyhd8R9SDjdSTmj5bzw7VB8BM4CudoS40R3jFgQU19_aJeER1MEjPrt80OSwaNdYoZXHMnozp5eTNZxUh5IN3ujfd8-_M7TFsHSZ7pwoF3s6CdD1QBksJSu1poCv2f9nvwAgti7kA=="
                 target="_blank"><img src="image2.png" alt="Diagrama do fluxo de dados do projeto.'"
                     class="demo-image"></a>
+        </section>
+
+        <section>
+            <h2>Classes</h2>
+            <p>O projeto é construído sobre uma arquitetura modular e orientada a objetos, onde cada
+                funcionalidade é encapsulada em classes bem definidas. Essa estrutura facilita a organização, manutenção
+                e o paralelismo do sistema.
+            </p>
+
+            <p>Abaixo, um diagrama do fluxo das classes:</p>
+            <a
+                href="https://www.plantuml.com/plantuml/png/hLR1Rjiu4BthAsPzQ6sqpWS8GT0YQT0icYPDdTsZEoR7DdSbZK9IQTeY-o-B7XOz5_i5_h7bW98PLNQmXnw2o3EFmpTFRqYzS1wjRyeY-yMlgIIuDGkBbSyoRtn1S69mPR54q0J71Jf73gRm-XtC0ieLwDbcsLCueQMf212SjutoWjQesK5jJQLCZKL6LQZu2KQUxlm9UXm1EdWlSFc9y2K3UCRMh4o5HIw5JBMIc6zt8lqmkk2x7DHjdb-HyjbzLh4d2AlN7dZve6x0lX9Ilh48Dmr1w8TM4eu42JRVe4RhJR56BV50r9AGysjBgDr1eAv1wcTPZUfFN16CBcoe5Ug66XR69PhgGDNrP0JIHjUgXALDE0yFWMDQVhxvhfk2dGXrsWI5E3Hj0YEA5PH83R_JGc5vZ7KWJo1nWAd2EZR-cz74RL9IyAo77qzYyA-TKUdir699OobrZlw99Ex3Nr_8Rd7QvJeePJuZNBqyEnFX45PaZPKSC5XIZNKC6k4ZoTA3a4ZwTPsTa2VbsNPD6JV7ebvZrPIXc6fPJcjBjML5pirDYQijUqsoV2vMcWSZFDv3jrca-AeA0hgcG40eDjzNHY5eXXavHnQLXulZgzsStuJ9eCxszFBoh2E_G4VpnZuqxKFRpWBBySrpS5Oz1szNFP85BONZiBWKWLDKOaeOXmVKD8bwe-H0SLaNT2Uc8R5HG9O1w-3rR7O9OtLzzMO21B--ltYxkv-BMx85Vcgx-E8yUgFkWxWMFmhdDZzUYaq2yn1w3a7jtIAtQAdL7XJGY5FyvczhKDX2kVdcMJEG2y6m5milWBURhmor9MKSWYCBfWfSAcLGOu_vlW6QnJaTJavCfC4fyxwVdyI4D4Zl6ceeXnlvTzZwwQW5sAQgmdlD0JsNHXqkc8kZc8fdXBnvdUVnHtpzSgxwpg_ESzqz_y6cakUsyBWdvu9zs28DtYnLl4HjHQbBoxhnRAV7NBccD9gjg0GnyHca6tAjKrhl6wvYfRtJc419C3JvTdPQ9Jp7m6DgnU4atSFSabGvx0x_8m7_39aIzQIK2CCbTKeGr56P3ztk7tRBi1s_eGo3yTpgiGt-dtQdwIwJ2SlXHrmV9dtD5QfrgDjKR3LPqlCIwv-ZNUftg5tIAkd7OCarXKVDi9HRElhksc58rQqzJqYnHI-tuh4md_muma_XYWhS_BFvbrnxrx83ESsu2Z_9PN9RmdHwr9_Y74RA6WII-uP62PKiy3WmzRi769471qVzKq9msoDfb43TQEp93psp3zWUdP9kN4XalRvvEXtm4HoCuvTCKF8hJqPPaY6jInHtBac2f2L3rhlNzj-ZudBuyJUW9CscBpCf79qrP394gjQO12LhipGgARW76ez0kZCBOqVP2wfqKnR_0G00">
+                <img src="image3.png" alt="Diagrama das Classes" class="demo-image"></a>
+            <p>A classe main atua como orquestradora, inicializando e coordenando as demais. Os dados trafegam pelo
+                pipeline através da textData (struct), que padroniza as informações de texto e sua posição. As
+                funcionalidades principais são divididas em classes como WebcamCapture para gerenciar a câmera, Detector
+                para o Reconhecimento Óptico de Caracteres (OCR) com Tesseract, LibreTranslateAPI para abstrair a
+                comunicação com a API de tradução, e Overlay para desenhar o texto traduzido nos frames. Para o
+                paralelismo, o projeto emprega classes dedicadas como WebcamThread, DetectionThread e TranslateThread,
+                que encapsulam a lógica de execução de suas respectivas fases do pipeline em std::threads.</p>
+
+            <p>O projeto faz uso extensivo de bibliotecas que também são fortemente orientadas a objetos. Do OpenCV,
+                classes como cv::Mat representam imagens e cv::VideoCapture controla a webcam, sendo fundamentais para o
+                processamento visual. A Standard Template Library (STL) do C++ fornece classes essenciais para a
+                concorrência, como std::thread para a criação de threads, std::queue para comunicação segura de dados
+                entre elas, e std::mutex, std::condition_variable e std::atomic(bool) para sincronização e controle do
+                fluxo. A LibreTranslateAPI se baseia em cpr para requisições HTTP e nlohmann/json para manipulação
+                de dados, demonstrando a integração eficaz com classes de bibliotecas externas para funcionalidades
+                complexas.</p>
+
+            <p>Essa sinergia entre as classes personalizadas e as classes robustas das bibliotecas permite que o
+                HQ-Translator execute suas funções complexas de forma eficiente e modular.
+            </p>
+
         </section>
 
         <section id="demonstracao">
